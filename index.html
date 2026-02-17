@@ -269,7 +269,7 @@
 
       <!-- COUNTDOWN — shown after tapping an app button -->
       <div class="countdown-box" id="countdownBox">
-        <div class="countdown-top">Scan the <strong>PAY QR on your table</strong> and pay &#8377;<span id="cdAmount">0</span></div>
+        <div class="countdown-top">Inside the app, tap <strong>Scan QR</strong> and scan the<br><strong>PAY QR on your table</strong> &rarr; enter &#8377;<span id="cdAmount">0</span> &rarr; pay</div>
         <div class="countdown-num" id="cdNum">30</div>
         <div class="countdown-sub">seconds — then come back here</div>
         <div class="countdown-bar-wrap">
@@ -343,7 +343,7 @@
 </div>
 
 <script>
-const OWNER_WHATSAPP = '917404787308';
+const OWNER_WHATSAPP = '919999999999';
 const UPI_ID         = '8130560938@ybl';
 const UPI_NAME       = 'Pearl Restaurant';
 const SHEET_URL      = 'https://script.google.com/macros/s/AKfycbzXgaSgv8FPV-mwiudhqInPSD3LMMhR9B3Zf7YHQ2PAxM9T_n-2u-kvqm-AGad3Euo_SQ/exec';
@@ -482,12 +482,11 @@ function openUPIApp(app) {
     }
   }, 1000);
 
-  // Try to open the app (works on Android, silently fails on iOS — that's fine)
-  const amount = total;
-  const upiStr = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
-  if (app === 'gpay')    window.location.href = `gpay://upi/pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
-  else if (app === 'phonepe') window.location.href = `phonepe://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
-  else if (app === 'paytm')   window.location.href = `paytmmp://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
+  // Open app home screen ONLY — no amount passed to avoid security block
+  // Customer will scan the table QR from inside the app and enter amount manually
+  if (app === 'gpay')         window.location.href = 'gpay://';
+  else if (app === 'phonepe') window.location.href = 'phonepe://';
+  else if (app === 'paytm')   window.location.href = 'paytmmp://';
 }
 
 function copyUPI() {
