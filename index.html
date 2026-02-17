@@ -1,139 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pearl — Panipat</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:#0e0c0a; --surface:#1a1713; --card:#211e1a;
-      --gold:#c9a84c; --gold-light:#e8cc80; --cream:#f5efe6;
-      --muted:#7a7060; --border:#2e2a24;
-      --green:#4caf7d; --orange:#e8954a; --red:#e05a5a;
+    :root{
+      --bg:#0e0c0a;--surface:#1a1713;--card:#211e1a;
+      --gold:#c9a84c;--gold-light:#e8cc80;--cream:#f5efe6;
+      --muted:#7a7060;--border:#2e2a24;
+      --green:#4caf7d;--orange:#e8954a;--red:#e05a5a;
     }
-    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-    body { background:var(--bg); color:var(--cream); font-family:'DM Sans',sans-serif; min-height:100vh; padding-bottom:120px; }
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:120px;}
 
-    .header { background:linear-gradient(160deg,#1a1410 0%,#0e0c0a 100%); padding:36px 20px 28px; text-align:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
-    .header::before { content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:300px; height:300px; background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%); pointer-events:none; }
-    .header-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:500; }
-    .header h1 { font-family:'Playfair Display',serif; font-size:46px; font-weight:700; color:var(--cream); letter-spacing:-1px; line-height:1; }
-    .header h1 span { color:var(--gold); font-style:italic; }
-    .header-sub { font-size:13px; color:var(--muted); margin-top:8px; }
-    .table-badge { display:inline-block; margin-top:14px; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:var(--gold-light); padding:6px 18px; border-radius:100px; font-size:12px; letter-spacing:1px; }
+    /* HEADER */
+    .header{background:linear-gradient(160deg,#1a1410 0%,#0e0c0a 100%);padding:36px 20px 28px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;}
+    .header-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;}
+    .header h1{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:var(--cream);letter-spacing:-1px;line-height:1;}
+    .header h1 span{color:var(--gold);font-style:italic;}
+    .header-sub{font-size:13px;color:var(--muted);margin-top:8px;}
+    .table-badge{display:inline-block;margin-top:14px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:6px 18px;border-radius:100px;font-size:12px;letter-spacing:1px;}
 
-    .tabs-wrap { overflow-x:auto; padding:18px 20px 0; scrollbar-width:none; }
-    .tabs-wrap::-webkit-scrollbar { display:none; }
-    .tabs { display:flex; gap:8px; width:max-content; }
-    .tab { padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s; border:1px solid var(--border); color:var(--muted); background:transparent; white-space:nowrap; font-family:'DM Sans',sans-serif; }
-    .tab.active { background:var(--gold); color:#0e0c0a; border-color:var(--gold); font-weight:600; }
+    /* TABS */
+    .tabs-wrap{overflow-x:auto;padding:18px 20px 0;scrollbar-width:none;}
+    .tabs-wrap::-webkit-scrollbar{display:none;}
+    .tabs{display:flex;gap:8px;width:max-content;}
+    .tab{padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;border:1px solid var(--border);color:var(--muted);background:transparent;white-space:nowrap;font-family:'DM Sans',sans-serif;}
+    .tab.active{background:var(--gold);color:#0e0c0a;border-color:var(--gold);font-weight:600;}
 
-    .section-title { font-family:'Playfair Display',serif; font-size:22px; padding:20px 20px 4px; color:var(--cream); font-style:italic; }
-    .section-desc { font-size:12px; color:var(--muted); padding:0 20px 16px; }
-    .menu-section { display:none; }
-    .menu-section.active { display:block; }
-    .divider { display:flex; align-items:center; gap:12px; padding:0 20px; margin:24px 0 0; }
-    .divider-line { flex:1; height:1px; background:var(--border); }
-    .divider-dot { width:5px; height:5px; background:var(--gold); border-radius:50%; }
+    /* MENU */
+    .section-title{font-family:'Playfair Display',serif;font-size:22px;padding:20px 20px 4px;color:var(--cream);font-style:italic;}
+    .section-desc{font-size:12px;color:var(--muted);padding:0 20px 16px;}
+    .menu-section{display:none;}
+    .menu-section.active{display:block;}
+    .divider{display:flex;align-items:center;gap:12px;padding:0 20px;margin:24px 0 0;}
+    .divider-line{flex:1;height:1px;background:var(--border);}
+    .divider-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;}
 
-    .item-card { margin:0 16px 12px; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; display:flex; align-items:center; gap:14px; transition:border-color 0.2s; position:relative; overflow:hidden; }
-    .item-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(201,168,76,0.04) 0%,transparent 60%); pointer-events:none; }
-    .item-card.selected { border-color:var(--gold); background:#251f15; }
-    .item-emoji { font-size:36px; width:54px; height:54px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.04); border-radius:12px; flex-shrink:0; }
-    .item-info { flex:1; min-width:0; }
-    .item-name { font-weight:500; font-size:15px; color:var(--cream); margin-bottom:3px; }
-    .item-desc { font-size:12px; color:var(--muted); line-height:1.4; }
-    .item-price { font-family:'Playfair Display',serif; font-size:17px; color:var(--gold); font-weight:600; white-space:nowrap; }
-    .rs { font-size:12px; }
-    .qty-control { display:flex; align-items:center; background:var(--surface); border-radius:100px; overflow:hidden; border:1px solid var(--border); margin-top:8px; width:fit-content; }
-    .qty-btn { width:30px; height:30px; background:transparent; border:none; color:var(--gold); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-    .qty-btn:active { background:rgba(201,168,76,0.1); }
-    .qty-num { font-size:14px; font-weight:600; color:var(--cream); min-width:24px; text-align:center; }
-    .add-btn { background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3); color:var(--gold); padding:6px 14px; border-radius:100px; font-size:12px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; }
+    /* ITEM CARD */
+    .item-card{margin:0 16px 12px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;transition:border-color 0.2s;position:relative;overflow:hidden;}
+    .item-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.04) 0%,transparent 60%);pointer-events:none;}
+    .item-card.selected{border-color:var(--gold);background:#251f15;}
+    .item-emoji{font-size:36px;width:54px;height:54px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.04);border-radius:12px;flex-shrink:0;}
+    .item-info{flex:1;min-width:0;}
+    .item-name{font-weight:500;font-size:15px;color:var(--cream);margin-bottom:3px;}
+    .item-desc{font-size:12px;color:var(--muted);line-height:1.4;}
+    .item-price{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);font-weight:600;white-space:nowrap;}
+    .rs{font-size:12px;}
+    .qty-control{display:flex;align-items:center;background:var(--surface);border-radius:100px;overflow:hidden;border:1px solid var(--border);margin-top:8px;width:fit-content;}
+    .qty-btn{width:30px;height:30px;background:transparent;border:none;color:var(--gold);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+    .qty-btn:active{background:rgba(201,168,76,0.1);}
+    .qty-num{font-size:14px;font-weight:600;color:var(--cream);min-width:24px;text-align:center;}
+    .add-btn{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
 
-    .cart-bar { position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--border); padding:14px 20px 20px; z-index:100; transform:translateY(100%); transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
-    .cart-bar.visible { transform:translateY(0); }
-    .cart-bar-inner { display:flex; align-items:center; gap:12px; }
-    .cart-info { flex:1; }
-    .cart-count { font-size:12px; color:var(--muted); margin-bottom:2px; }
-    .cart-total { font-family:'Playfair Display',serif; font-size:20px; color:var(--cream); }
-    .cart-btn { background:var(--gold); color:#0e0c0a; border:none; padding:14px 24px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; }
-    .cart-btn:active { transform:scale(0.97); }
+    /* CART BAR */
+    .cart-bar{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 20px 20px;z-index:100;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+    .cart-bar.visible{transform:translateY(0);}
+    .cart-bar-inner{display:flex;align-items:center;gap:12px;}
+    .cart-info{flex:1;}
+    .cart-count{font-size:12px;color:var(--muted);margin-bottom:2px;}
+    .cart-total{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);}
+    .cart-btn{background:var(--gold);color:#0e0c0a;border:none;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .cart-btn:active{transform:scale(0.97);}
 
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:200; display:none; align-items:flex-end; justify-content:center; }
-    .modal-overlay.open { display:flex; }
-    .modal { background:var(--surface); border-radius:24px 24px 0 0; padding:28px 20px 40px; width:100%; max-width:480px; border-top:1px solid var(--border); animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1); max-height:92vh; overflow-y:auto; }
-    @keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
-    .modal-handle { width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 20px; }
-    .modal-title { font-family:'Playfair Display',serif; font-size:22px; margin-bottom:6px; color:var(--cream); }
-    .modal-sub { font-size:13px; color:var(--muted); margin-bottom:22px; }
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;display:none;align-items:flex-end;justify-content:center;}
+    .modal-overlay.open{display:flex;}
+    .modal{background:var(--surface);border-radius:24px 24px 0 0;padding:28px 20px 40px;width:100%;max-width:480px;border-top:1px solid var(--border);animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);max-height:92vh;overflow-y:auto;}
+    @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 20px;}
+    .modal-title{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px;color:var(--cream);}
+    .modal-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
 
-    .order-items-box { background:var(--card); border-radius:12px; padding:14px; margin-bottom:20px; border:1px solid var(--border); }
-    .order-item-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:14px; }
-    .order-item-row:not(:last-child) { border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:4px; }
-    .oname { color:var(--cream); }
-    .oqty { color:var(--muted); font-size:12px; margin-left:6px; }
-    .oprice { color:var(--gold); font-weight:500; }
-    .order-total-row { display:flex; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-weight:600; font-size:15px; }
+    /* ORDER SUMMARY */
+    .order-box{background:var(--card);border-radius:12px;padding:14px;margin-bottom:20px;border:1px solid var(--border);}
+    .orow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px;}
+    .orow:not(:last-child){border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:4px;}
+    .oname{color:var(--cream);}
+    .oqty{color:var(--muted);font-size:12px;margin-left:6px;}
+    .oprice{color:var(--gold);font-weight:500;}
+    .ototal{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-weight:600;font-size:15px;}
 
-    .form-label { font-size:12px; color:var(--muted); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px; display:block; }
-    .form-input { width:100%; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:13px 14px; color:var(--cream); font-size:15px; font-family:'DM Sans',sans-serif; margin-bottom:14px; outline:none; transition:border-color 0.2s; }
-    .form-input:focus { border-color:var(--gold); }
-    .form-input::placeholder { color:var(--muted); }
-    .primary-btn { width:100%; background:var(--gold); color:#0e0c0a; border:none; padding:16px; border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:4px; }
-    .primary-btn:active { transform:scale(0.98); }
-    .secondary-btn { width:100%; background:transparent; border:1px solid var(--border); color:var(--muted); padding:13px; border-radius:12px; font-size:13px; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:10px; }
-    .note-text { font-size:11px; color:var(--muted); text-align:center; margin-top:10px; }
+    /* FORM */
+    .flabel{font-size:12px;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;display:block;}
+    .finput{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--cream);font-size:15px;font-family:'DM Sans',sans-serif;margin-bottom:14px;outline:none;transition:border-color 0.2s;}
+    .finput:focus{border-color:var(--gold);}
+    .finput::placeholder{color:var(--muted);}
+    .btn-gold{width:100%;background:var(--gold);color:#0e0c0a;border:none;padding:16px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.1s;}
+    .btn-gold:active{transform:scale(0.98);}
+    .note-text{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
 
-    /* ── UPI SCREEN ── */
-    .upi-amount-box { background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px; text-align:center; margin-bottom:18px; }
-    .upi-big-amount { font-family:'Playfair Display',serif; font-size:42px; color:var(--gold); }
-    .upi-amount-label { font-size:12px; color:var(--muted); margin-top:2px; }
-    .qr-center { text-align:center; margin-bottom:16px; }
-    .qr-white-box { background:white; border-radius:14px; padding:12px; display:inline-block; }
-    .qr-white-box img { width:190px; height:190px; display:block; }
-    .upi-id-row { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
-    .upi-id-val { font-size:15px; color:var(--cream); font-weight:600; }
-    .copy-btn { font-size:12px; color:var(--gold); background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); padding:5px 12px; border-radius:6px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
-    .copy-btn.copied { color:var(--green); background:rgba(76,175,125,0.1); border-color:rgba(76,175,125,0.3); }
-    .steps-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:16px; }
-    .steps-title { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-    .pay-step { display:flex; gap:10px; padding:5px 0; font-size:13px; color:var(--muted); align-items:flex-start; }
-    .pay-step-n { width:20px; height:20px; background:rgba(201,168,76,0.12); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; margin-top:1px; }
-    .pay-step strong { color:var(--cream); }
-    .staff-confirm-box { background:rgba(232,149,74,0.08); border:1px solid rgba(232,149,74,0.25); border-radius:12px; padding:14px 16px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start; }
-    .staff-icon { font-size:24px; flex-shrink:0; }
-    .staff-title { font-size:14px; font-weight:600; color:var(--cream); margin-bottom:4px; }
-    .staff-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+    /* ── PAYMENT SCREEN ── */
+    .pay-amount-box{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);border-radius:14px;padding:18px;text-align:center;margin-bottom:20px;}
+    .pay-big{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold);line-height:1;}
+    .pay-lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+    .pay-upi-label{font-size:13px;color:var(--muted);margin-bottom:10px;font-weight:500;}
 
-    /* STATUS */
-    .status-screen { text-align:center; padding:10px 0; }
-    .s-order-id { font-size:12px; color:var(--muted); letter-spacing:1px; margin-bottom:16px; }
-    .s-emoji { font-size:60px; margin-bottom:16px; display:block; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
-    .s-title { font-family:'Playfair Display',serif; font-size:24px; margin-bottom:8px; }
-    .s-msg { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:24px; }
-    .steps-track { display:flex; justify-content:center; margin-bottom:28px; }
-    .st-item { display:flex; flex-direction:column; align-items:center; position:relative; flex:1; max-width:80px; }
-    .st-item:not(:last-child)::after { content:''; position:absolute; top:12px; left:calc(50% + 12px); right:calc(-50% + 12px); height:2px; background:var(--border); z-index:0; }
-    .st-item.done:not(:last-child)::after { background:var(--green); }
-    .st-dot { width:24px; height:24px; border-radius:50%; border:2px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:11px; margin-bottom:6px; z-index:1; position:relative; transition:all 0.4s; }
-    .st-item.done .st-dot { border-color:var(--green); background:var(--green); color:white; }
-    .st-item.active .st-dot { border-color:var(--gold); background:rgba(201,168,76,0.15); animation:stPulse 1.5s infinite; }
-    @keyframes stPulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4)} 50%{box-shadow:0 0 0 8px rgba(201,168,76,0)} }
-    .st-label { font-size:10px; color:var(--muted); text-align:center; }
-    .st-item.done .st-label { color:var(--green); }
-    .st-item.active .st-label { color:var(--gold); }
-    .eta-box { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 20px; margin:0 0 20px; display:none; }
-    .eta-box.show { display:block; }
-    .eta-lbl { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
-    .eta-val { font-family:'Playfair Display',serif; font-size:28px; color:var(--gold); }
-    .eta-sub { font-size:12px; color:var(--muted); }
-    .ready-box { background:rgba(76,175,125,0.08); border:1px solid rgba(76,175,125,0.25); border-radius:12px; padding:16px; margin-bottom:16px; font-size:14px; display:none; }
-    .ready-box.show { display:block; }
-    .live-dot { display:inline-block; width:6px; height:6px; background:var(--green); border-radius:50%; animation:lp 1.5s infinite; margin-right:6px; vertical-align:middle; }
-    @keyframes lp { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    /* UPI APP BUTTONS */
+    .upi-apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+    .upi-app-btn{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;text-decoration:none;}
+    .upi-app-btn:active{transform:scale(0.97);border-color:var(--gold);}
+    .upi-app-icon{font-size:28px;}
+    .upi-app-name{font-size:13px;font-weight:600;color:var(--cream);}
+    .upi-app-sub{font-size:11px;color:var(--muted);}
+
+    /* UPI ID COPY ROW */
+    .upi-id-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;}
+    .upi-id-label{font-size:11px;color:var(--muted);margin-bottom:2px;}
+    .upi-id-val{font-size:15px;color:var(--cream);font-weight:600;}
+    .copy-btn{font-size:12px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+    .copy-btn.copied{color:var(--green);background:rgba(76,175,125,0.1);border-color:rgba(76,175,125,0.3);}
+
+    /* DIVIDER WITH TEXT */
+    .or-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+    .or-line{flex:1;height:1px;background:var(--border);}
+    .or-text{font-size:12px;color:var(--muted);white-space:nowrap;}
+
+    /* CASH OPTION */
+    .cash-btn{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color 0.2s;margin-bottom:4px;}
+    .cash-btn:active{border-color:var(--gold);}
+    .cash-icon{font-size:28px;flex-shrink:0;}
+    .cash-info{text-align:left;}
+    .cash-title{font-size:15px;font-weight:600;color:var(--cream);}
+    .cash-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+
+    /* I'VE PAID — shown after tapping a UPI app */
+    .paid-confirm{display:none;background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:20px;text-align:center;margin-top:16px;}
+    .paid-confirm.show{display:block;}
+    .paid-confirm-icon{font-size:40px;margin-bottom:10px;}
+    .paid-confirm-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+    .paid-confirm-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+    .btn-green{width:100%;background:var(--green);color:white;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .btn-ghost{width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:12px;border-radius:12px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;}
+
+    /* STATUS SCREEN */
+    .status-screen{text-align:center;padding:10px 0;}
+    .s-oid{font-size:12px;color:var(--muted);letter-spacing:1px;margin-bottom:16px;}
+    .s-emoji{font-size:60px;margin-bottom:16px;display:block;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+    .s-title{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
+    .s-msg{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+
+    /* PAYMENT METHOD TAG on status */
+    .pay-method-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:20px;}
+    .pay-method-tag.upi{background:rgba(74,158,237,0.12);color:#4a9eed;border:1px solid rgba(74,158,237,0.25);}
+    .pay-method-tag.cash{background:rgba(232,149,74,0.12);color:var(--orange);border:1px solid rgba(232,149,74,0.25);}
+
+    .steps-track{display:flex;justify-content:center;margin-bottom:28px;}
+    .st-item{display:flex;flex-direction:column;align-items:center;position:relative;flex:1;max-width:80px;}
+    .st-item:not(:last-child)::after{content:'';position:absolute;top:12px;left:calc(50% + 12px);right:calc(-50% + 12px);height:2px;background:var(--border);z-index:0;}
+    .st-item.done:not(:last-child)::after{background:var(--green);}
+    .st-dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;margin-bottom:6px;z-index:1;position:relative;transition:all 0.4s;}
+    .st-item.done .st-dot{border-color:var(--green);background:var(--green);color:white;}
+    .st-item.active .st-dot{border-color:var(--gold);background:rgba(201,168,76,0.15);animation:stpulse 1.5s infinite;}
+    @keyframes stpulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4)}50%{box-shadow:0 0 0 8px rgba(201,168,76,0)}}
+    .st-label{font-size:10px;color:var(--muted);text-align:center;}
+    .st-item.done .st-label{color:var(--green);}
+    .st-item.active .st-label{color:var(--gold);}
+
+    .eta-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:14px 20px;margin-bottom:20px;display:none;}
+    .eta-box.show{display:block;}
+    .eta-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+    .eta-val{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);}
+    .eta-sub{font-size:12px;color:var(--muted);}
+    .ready-box{background:rgba(76,175,125,0.08);border:1px solid rgba(76,175,125,0.25);border-radius:12px;padding:16px;margin-bottom:16px;font-size:14px;display:none;}
+    .ready-box.show{display:block;}
+    .live-dot{display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;animation:lp 1.5s infinite;margin-right:6px;vertical-align:middle;}
+    @keyframes lp{0%,100%{opacity:1}50%{opacity:0.3}}
   </style>
 </head>
 <body>
@@ -175,83 +211,118 @@
   <div id="mealItems"></div>
 </div>
 
+<!-- CART BAR -->
 <div class="cart-bar" id="cartBar">
   <div class="cart-bar-inner">
     <div class="cart-info">
       <div class="cart-count" id="cartCount">0 items</div>
       <div class="cart-total">₹<span id="cartTotal">0</span></div>
     </div>
-    <button class="cart-btn" onclick="openOrderModal()">Review Order →</button>
+    <button class="cart-btn" onclick="openModal()">Review Order →</button>
   </div>
 </div>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-handle"></div>
 
-    <!-- STEP 1: DETAILS FORM -->
+    <!-- STEP 1: CUSTOMER DETAILS -->
     <div id="step1">
       <p class="modal-title">Your Order</p>
-      <p class="modal-sub">Quick details to place your order</p>
-      <div class="order-items-box" id="modalOrderItems"></div>
-      <label class="form-label">Your Name</label>
-      <input class="form-input" type="text" id="custName" placeholder="e.g. Rahul" />
-      <label class="form-label">WhatsApp Number</label>
-      <input class="form-input" type="tel" id="custPhone" placeholder="10-digit number" maxlength="10" />
-      <label class="form-label">Table Number</label>
-      <input class="form-input" type="number" id="tableNum" placeholder="e.g. 4" />
-      <button class="primary-btn" onclick="goToPayment()">Continue to Payment →</button>
-      <p class="note-text">We save your number to send you special offers 🎁</p>
+      <p class="modal-sub">Enter your details to continue</p>
+      <div class="order-box" id="orderSummary"></div>
+      <label class="flabel">Your Name</label>
+      <input class="finput" type="text" id="custName" placeholder="e.g. Rahul"/>
+      <label class="flabel">WhatsApp Number</label>
+      <input class="finput" type="tel" id="custPhone" placeholder="10-digit number" maxlength="10"/>
+      <label class="flabel">Table Number</label>
+      <input class="finput" type="number" id="tableNum" placeholder="e.g. 4"/>
+      <button class="btn-gold" onclick="goToPayment()">Continue to Payment →</button>
+      <p class="note-text">We'll send you special offers on WhatsApp 🎁</p>
     </div>
 
-    <!-- STEP 2: UPI PAYMENT (FIXED) -->
+    <!-- STEP 2: PAYMENT -->
     <div id="step2" style="display:none">
-      <p class="modal-title">Pay Now</p>
-      <p class="modal-sub">Scan QR with any UPI app on your phone</p>
+      <p class="modal-title">Choose Payment</p>
+      <p class="modal-sub">Pay now or at the counter</p>
 
-      <div class="upi-amount-box">
-        <div class="upi-big-amount">₹<span id="upiAmount">0</span></div>
-        <div class="upi-amount-label">Total Amount to Pay</div>
+      <!-- AMOUNT -->
+      <div class="pay-amount-box">
+        <div class="pay-big">₹<span id="payAmount">0</span></div>
+        <div class="pay-lbl">Total Amount</div>
       </div>
 
-      <div class="qr-center">
-        <div class="qr-white-box">
-          <img id="upiQRImg" src="" alt="UPI QR Code" />
-        </div>
+      <!-- UPI APPS — open directly on same phone -->
+      <p class="pay-upi-label">Pay online via UPI</p>
+      <div class="upi-apps-grid">
+        <a class="upi-app-btn" id="gpayBtn" onclick="openedUPI()">
+          <div class="upi-app-icon">🟢</div>
+          <div class="upi-app-name">Google Pay</div>
+          <div class="upi-app-sub">Tap to open</div>
+        </a>
+        <a class="upi-app-btn" id="phonepeBtn" onclick="openedUPI()">
+          <div class="upi-app-icon">🟣</div>
+          <div class="upi-app-name">PhonePe</div>
+          <div class="upi-app-sub">Tap to open</div>
+        </a>
+        <a class="upi-app-btn" id="paytmBtn" onclick="openedUPI()">
+          <div class="upi-app-icon">🔵</div>
+          <div class="upi-app-name">Paytm</div>
+          <div class="upi-app-sub">Tap to open</div>
+        </a>
+        <a class="upi-app-btn" id="bhimBtn" onclick="openedUPI()">
+          <div class="upi-app-icon">🇮🇳</div>
+          <div class="upi-app-name">BHIM / Other</div>
+          <div class="upi-app-sub">Any UPI app</div>
+        </a>
       </div>
 
+      <!-- UPI ID to manually enter in app -->
       <div class="upi-id-row">
-        <span class="upi-id-val" id="upiIdShow">pearl@upi</span>
-        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy UPI ID</button>
-      </div>
-
-      <div class="steps-box">
-        <div class="steps-title">How to pay</div>
-        <div class="pay-step"><div class="pay-step-n">1</div><div>Open <strong>GPay, PhonePe, Paytm</strong> or any UPI app</div></div>
-        <div class="pay-step"><div class="pay-step-n">2</div><div>Tap <strong>Scan QR</strong> and scan the code above</div></div>
-        <div class="pay-step"><div class="pay-step-n">3</div><div>Or tap <strong>Send Money → Pay by UPI ID</strong> and enter the ID</div></div>
-        <div class="pay-step"><div class="pay-step-n">4</div><div>Complete payment and <strong>show the success screen to staff</strong></div></div>
-      </div>
-
-      <!-- KEY FIX: Staff confirms payment, not customer self-certify -->
-      <div class="staff-confirm-box">
-        <div class="staff-icon">👨‍💼</div>
         <div>
-          <div class="staff-title">Show payment to staff</div>
-          <div class="staff-desc">After paying, show your UPI success screen to our staff member. They will verify and place your order.</div>
+          <div class="upi-id-label">Or enter UPI ID manually</div>
+          <div class="upi-id-val" id="upiIdVal">pearl@upi</div>
         </div>
+        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy</button>
       </div>
 
-      <button class="primary-btn" onclick="placeOrder('upi')">✓ Staff Verified — Place My Order</button>
-      <button class="secondary-btn" onclick="placeOrder('cash')">Pay at Counter Instead (Cash)</button>
+      <!-- After tapping UPI app — confirm paid -->
+      <div class="paid-confirm" id="paidConfirm">
+        <div class="paid-confirm-icon">✅</div>
+        <div class="paid-confirm-title">Payment done?</div>
+        <div class="paid-confirm-sub">If your payment was successful, tap below to place your order. The owner will verify the payment.</div>
+        <button class="btn-green" onclick="submitOrder('upi')">Yes, I've Paid — Place Order</button>
+        <button class="btn-ghost" onclick="hidePaidConfirm()">← Go Back</button>
+      </div>
+
+      <!-- OR DIVIDER -->
+      <div class="or-divider" id="orDivider">
+        <div class="or-line"></div>
+        <div class="or-text">OR pay at counter</div>
+        <div class="or-line"></div>
+      </div>
+
+      <!-- CASH OPTION -->
+      <button class="cash-btn" id="cashBtn" onclick="submitOrder('cash')">
+        <div class="cash-icon">💵</div>
+        <div class="cash-info">
+          <div class="cash-title">Pay at Counter</div>
+          <div class="cash-sub">Order placed now, pay when food arrives</div>
+        </div>
+      </button>
     </div>
 
-    <!-- STEP 3: LIVE STATUS -->
+    <!-- STEP 3: LIVE ORDER STATUS -->
     <div id="step3" style="display:none">
       <div class="status-screen">
-        <div class="s-order-id" id="sOrderId"></div>
+        <div class="s-oid" id="sOid"></div>
         <span class="s-emoji" id="sEmoji">⏳</span>
         <p class="s-title" id="sTitle">Order Placed!</p>
+
+        <!-- Shows how customer paid -->
+        <div class="pay-method-tag" id="payTag"></div>
+
         <p class="s-msg" id="sMsg">Waiting for Pearl to confirm...<br><span class="live-dot"></span>Live updates</p>
 
         <div class="steps-track">
@@ -279,7 +350,7 @@
           🎉 Your order is ready! Please collect from the counter.
         </div>
 
-        <button class="secondary-btn" onclick="closeModal()">← Back to Menu</button>
+        <button class="btn-ghost" style="margin-top:8px" onclick="closeModal()">← Back to Menu</button>
       </div>
     </div>
 
@@ -287,25 +358,27 @@
 </div>
 
 <script>
-const OWNER_WHATSAPP = '919999999999';
-const UPI_ID         = 'pearl@upi';
+// ─── CONFIG — CHANGE THESE ─────────────────────────────────
+const OWNER_WHATSAPP = '919999999999';   // 91 + owner number
+const UPI_ID         = 'pearl@upi';      // Real UPI ID of restaurant
 const UPI_NAME       = 'Pearl Restaurant';
 const SHEET_URL      = 'https://script.google.com/macros/s/AKfycbzXgaSgv8FPV-mwiudhqInPSD3LMMhR9B3Zf7YHQ2PAxM9T_n-2u-kvqm-AGad3Euo_SQ/exec';
+// ──────────────────────────────────────────────────────────
 
 const MENU = [
-  { id:1, name:'Chai',       price:50,  emoji:'🍵', cat:'drinks', desc:'Classic Indian milk tea' },
-  { id:2, name:'Adrak Chai', price:80,  emoji:'🫚', cat:'drinks', desc:'Ginger tea, extra warmth' },
-  { id:3, name:'Samosa',     price:90,  emoji:'🥟', cat:'snacks', desc:'Crispy, spiced potato filling' },
-  { id:4, name:'Pasta',      price:150, emoji:'🍝', cat:'meals',  desc:'Creamy masala pasta' },
-  { id:5, name:'Pizza',      price:190, emoji:'🍕', cat:'meals',  desc:'Fresh baked, loaded toppings' },
+  {id:1,name:'Chai',       price:50, emoji:'🍵',cat:'drinks',desc:'Classic Indian milk tea'},
+  {id:2,name:'Adrak Chai', price:80, emoji:'🫚',cat:'drinks',desc:'Ginger tea, extra warmth'},
+  {id:3,name:'Samosa',     price:90, emoji:'🥟',cat:'snacks',desc:'Crispy, spiced potato filling'},
+  {id:4,name:'Pasta',      price:150,emoji:'🍝',cat:'meals', desc:'Creamy masala pasta'},
+  {id:5,name:'Pizza',      price:190,emoji:'🍕',cat:'meals', desc:'Fresh baked, loaded toppings'},
 ];
 
-const cart = {};
-let currentOrderId = null;
-let pollTimer = null;
+const cart={};
+let currentOrderId=null, pollTimer=null, currentPayMethod=null;
 
-function renderItems(items, cid) {
-  document.getElementById(cid).innerHTML = items.map(i => `
+// ── RENDER MENU ────────────────────────────────────────────
+function renderItems(items,cid){
+  document.getElementById(cid).innerHTML=items.map(i=>`
     <div class="item-card" id="card-${i.id}">
       <div class="item-emoji">${i.emoji}</div>
       <div class="item-info">
@@ -324,7 +397,7 @@ function renderItems(items, cid) {
     </div>`).join('');
 }
 
-function addFirst(id) {
+function addFirst(id){
   cart[id]=1;
   document.getElementById(`addbtn-${id}`).style.display='none';
   document.getElementById(`qty-${id}`).style.display='flex';
@@ -332,7 +405,7 @@ function addFirst(id) {
   document.getElementById(`card-${id}`).classList.add('selected');
   updateCart();
 }
-function changeQty(id,d) {
+function changeQty(id,d){
   cart[id]=(cart[id]||0)+d;
   if(cart[id]<=0){
     delete cart[id];
@@ -342,74 +415,99 @@ function changeQty(id,d) {
   } else document.getElementById(`qnum-${id}`).textContent=cart[id];
   updateCart();
 }
-function updateCart() {
+function updateCart(){
   let total=0,count=0;
-  Object.keys(cart).forEach(id=>{
-    const m=MENU.find(m=>m.id==id);
-    total+=m.price*cart[id]; count+=cart[id];
-  });
+  Object.keys(cart).forEach(id=>{const m=MENU.find(m=>m.id==id);total+=m.price*cart[id];count+=cart[id];});
   document.getElementById('cartTotal').textContent=total;
   document.getElementById('cartCount').textContent=`${count} item${count!==1?'s':''}`;
   document.getElementById('cartBar').classList.toggle('visible',count>0);
 }
-function switchTab(cat,el) {
+function switchTab(cat,el){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
   el.classList.add('active');
   document.getElementById(`sec-${cat}`).classList.add('active');
 }
 
-function openOrderModal() {
+// ── MODAL ──────────────────────────────────────────────────
+function openModal(){
   if(!Object.keys(cart).length) return;
   let html='',total=0;
   Object.keys(cart).forEach(id=>{
-    const m=MENU.find(m=>m.id==id);
-    const sub=m.price*cart[id]; total+=sub;
-    html+=`<div class="order-item-row">
-      <div><span class="oname">${m.name}</span><span class="oqty">x${cart[id]}</span></div>
-      <div class="oprice">₹${sub}</div></div>`;
+    const m=MENU.find(m=>m.id==id);const sub=m.price*cart[id];total+=sub;
+    html+=`<div class="orow"><div><span class="oname">${m.name}</span><span class="oqty">x${cart[id]}</span></div><div class="oprice">₹${sub}</div></div>`;
   });
-  html+=`<div class="order-total-row"><span>Total</span><span style="color:var(--gold)">₹${total}</span></div>`;
-  document.getElementById('modalOrderItems').innerHTML=html;
+  html+=`<div class="ototal"><span>Total</span><span style="color:var(--gold)">₹${total}</span></div>`;
+  document.getElementById('orderSummary').innerHTML=html;
   showStep(1);
   document.getElementById('modalOverlay').classList.add('open');
 }
-function closeModal() {
+function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
   if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
 }
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 function showStep(n){[1,2,3].forEach(i=>document.getElementById(`step${i}`).style.display=i===n?'block':'none');}
 
-function goToPayment() {
+// ── STEP 1 → PAYMENT ──────────────────────────────────────
+function goToPayment(){
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
   const table=document.getElementById('tableNum').value.trim();
   if(!name){alert('Please enter your name');return;}
   if(phone.length!==10){alert('Enter a valid 10-digit number');return;}
   if(!table){alert('Please enter your table number');return;}
+
   const total=Object.keys(cart).reduce((s,id)=>s+MENU.find(m=>m.id==id).price*cart[id],0);
-  document.getElementById('upiAmount').textContent=total;
-  document.getElementById('upiIdShow').textContent=UPI_ID;
-  // QR encodes the UPI deep link — any UPI app can read this
-  const upiStr=`upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR&tn=PearlOrder`;
-  document.getElementById('upiQRImg').src=`https://api.qrserver.com/v1/create-qr-code/?size=190x190&data=${encodeURIComponent(upiStr)}`;
+  document.getElementById('payAmount').textContent=total;
+  document.getElementById('upiIdVal').textContent=UPI_ID;
+
+  // Set UPI deep links — opens the app directly on customer's phone
+  const upiBase=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR&tn=PearlOrder`;
+  document.getElementById('gpayBtn').href=`gpay://upi/pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
+  document.getElementById('phonepeBtn').href=`phonepe://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
+  document.getElementById('paytmBtn').href=`paytmmp://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
+  document.getElementById('bhimBtn').href=upiBase;
+
+  // Hide paid confirm box initially
+  document.getElementById('paidConfirm').classList.remove('show');
+  document.getElementById('orDivider').style.display='flex';
+  document.getElementById('cashBtn').style.display='flex';
+
   showStep(2);
 }
 
-function copyUPI() {
+// Called when any UPI app button is tapped
+function openedUPI(){
+  // Small delay to let the app open, then show "Did you pay?" confirmation
+  setTimeout(()=>{
+    document.getElementById('paidConfirm').classList.add('show');
+    // Scroll to show the confirm box
+    document.getElementById('paidConfirm').scrollIntoView({behavior:'smooth',block:'center'});
+  }, 1500);
+}
+
+function hidePaidConfirm(){
+  document.getElementById('paidConfirm').classList.remove('show');
+}
+
+function copyUPI(){
   navigator.clipboard.writeText(UPI_ID).then(()=>{
     const b=document.getElementById('copyBtn');
-    b.textContent='✓ Copied!'; b.classList.add('copied');
-    setTimeout(()=>{b.textContent='Copy UPI ID';b.classList.remove('copied');},2500);
+    b.textContent='Copied ✓';b.classList.add('copied');
+    setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied');},2500);
   });
 }
 
-function placeOrder(method) {
+// ── SUBMIT ORDER (UPI or Cash) ─────────────────────────────
+// Both go to owner dashboard immediately
+// Owner manually checks UPI app if payment method is UPI
+function submitOrder(method){
+  currentPayMethod=method;
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
   const table=document.getElementById('tableNum').value.trim();
-  const total=document.getElementById('upiAmount').textContent;
+  const total=document.getElementById('payAmount').textContent;
 
   let itemsText='';
   Object.keys(cart).forEach(id=>{
@@ -418,47 +516,66 @@ function placeOrder(method) {
   });
 
   currentOrderId='PRD'+Date.now().toString().slice(-6);
+  const now=new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
 
-  // ── OWNER gets clean order details only ──
+  // ── OWNER WhatsApp notification ──
+  // Clean message, shows payment method clearly so owner knows what to check
+  const payLabel = method==='upi'
+    ? '💳 UPI — check your UPI app to verify'
+    : '💵 Cash — collect at table';
+
   const ownerMsg=
     `🔔 *New Order — Pearl*\n\n`+
-    `🆔 Order: #${currentOrderId}\n`+
-    `👤 ${name} | Table ${table}\n`+
-    `📱 ${phone}\n`+
-    `💳 Payment: ${method==='upi'?'UPI ✓':'Cash — collect at table'}\n\n`+
+    `🆔 #${currentOrderId} | Table ${table}\n`+
+    `👤 ${name} | 📱 ${phone}\n`+
+    `${payLabel}\n\n`+
     `*Items:*\n${itemsText}\n`+
-    `💰 *Total: ₹${total}*\n\n`+
-    `_Open dashboard: pearl-menu.vercel.app/owner.html_`;
+    `💰 *Total: ₹${total}*`;
 
-  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(ownerMsg)}`, '_blank');
+  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(ownerMsg)}`,'_blank');
 
-  // Save to Google Sheet
-  const now=new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({action:'neworder',orderId:currentOrderId,name,phone,table,items:itemsText,total,time:now,status:'pending',payment:method})});
+  // ── Save to Google Sheet ──
+  fetch(SHEET_URL,{
+    method:'POST',mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({action:'neworder',orderId:currentOrderId,name,phone,table,items:itemsText,total,time:now,status:'pending',payment:method})
+  });
 
-  // Show status screen
+  // ── Show status screen ──
   showStep(3);
-  document.getElementById('sOrderId').textContent=`Order #${currentOrderId}`;
+  document.getElementById('sOid').textContent=`Order #${currentOrderId}`;
 
-  // Poll for status updates
+  // Payment method tag shown to customer
+  const tag=document.getElementById('payTag');
+  if(method==='upi'){
+    tag.className='pay-method-tag upi';
+    tag.textContent='💳 Paid via UPI';
+  } else {
+    tag.className='pay-method-tag cash';
+    tag.textContent='💵 Pay at Counter';
+  }
+
+  // Start polling for status updates from owner dashboard
   pollTimer=setInterval(()=>{
     fetch(`${SHEET_URL}?action=status&orderId=${currentOrderId}`)
       .then(r=>r.json()).then(updateStatusUI).catch(()=>{});
   },8000);
 
-  // Clear cart from UI
+  // Clear cart
   Object.keys(cart).forEach(id=>{
     delete cart[id];
     const a=document.getElementById(`addbtn-${id}`);
     const q=document.getElementById(`qty-${id}`);
     const c=document.getElementById(`card-${id}`);
-    if(a)a.style.display='block'; if(q)q.style.display='none'; if(c)c.classList.remove('selected');
+    if(a)a.style.display='block';
+    if(q)q.style.display='none';
+    if(c)c.classList.remove('selected');
   });
   updateCart();
 }
 
-function updateStatusUI(data) {
+// ── STATUS POLLING ─────────────────────────────────────────
+function updateStatusUI(data){
   if(!data||!data.status) return;
   const s=data.status.toLowerCase();
   if(s==='preparing'||s==='accepted'){
@@ -482,6 +599,7 @@ function updateStatusUI(data) {
   }
 }
 
+// ── INIT ───────────────────────────────────────────────────
 renderItems(MENU,'allItems');
 renderItems(MENU.filter(m=>m.cat==='drinks'),'drinkItems');
 renderItems(MENU.filter(m=>m.cat==='snacks'),'snackItems');
@@ -491,4 +609,3 @@ if(tbl){document.getElementById('tableBadge').textContent=`🪑 Table ${tbl}`;do
 </script>
 </body>
 </html>
-
