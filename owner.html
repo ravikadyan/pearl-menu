@@ -55,6 +55,9 @@
 
     /* STATUS BADGE */
     .status-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:100px; font-size:11px; font-weight:600; }
+    .pay-badge { display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:100px; font-size:11px; font-weight:700; margin-left:6px; }
+    .pay-badge.upi { background:rgba(74,158,237,0.15); color:#4a9eed; border:1px solid rgba(74,158,237,0.3); }
+    .pay-badge.cash { background:rgba(232,149,74,0.15); color:var(--orange); border:1px solid rgba(232,149,74,0.3); }
     .status-badge.pending { background:rgba(232,149,74,0.15); color:var(--orange); border:1px solid rgba(232,149,74,0.3); }
     .status-badge.preparing { background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3); }
     .status-badge.ready { background:rgba(76,175,125,0.15); color:var(--green); border:1px solid rgba(76,175,125,0.3); }
@@ -263,7 +266,11 @@ function renderOrders() {
     return `<div class="order-card ${order.status === 'pending' ? 'new' : ''}" id="oc-${order.orderId}">
       <div class="order-header">
         <div>
-          <div class="order-id">#${order.orderId}</div>
+          <div class="order-id">#${order.orderId}
+            ${order.payment === 'upi' 
+              ? '<span class="pay-badge upi">✅ UPI Paid</span>' 
+              : '<span class="pay-badge cash">💵 Cash / Later</span>'}
+          </div>
           ${statusBadge}
         </div>
         <div class="order-time">${order.time}</div>
@@ -298,8 +305,14 @@ function acceptOrder(orderId) {
   updateOrderStatus(orderId, 'preparing', eta);
   const order = orders.find(o => o.orderId === orderId);
   if (order) {
-    // Send WhatsApp to customer
-    const msg = `✅ *Order Confirmed — Pearl*\n\nHi ${order.name}! Your order #${orderId} has been accepted.\n⏱️ Estimated time: *${eta}*\n\nSit back and relax! 🙏`;
+    // Opens WhatsApp with customer's number — owner just presses Send
+    const itemsList = order.items.trim().split('\n').filter(Boolean).join('\n');
+    const msg = `✅ *Order Confirmed!*\n\n`
+      + `Hi ${order.name}! 👋 Your order at *Pearl, Panipat* is confirmed.\n\n`
+      + `*Your Items:*\n${itemsList}\n\n`
+      + `⏱️ *Ready in: ${eta}*\n`
+      + `🪑 *Table:* ${order.table}\n\n`
+      + `Sit back and relax — we will notify you when ready! 🙏`;
     window.open(`https://wa.me/91${order.phone}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 }
@@ -308,7 +321,12 @@ function markReady(orderId) {
   updateOrderStatus(orderId, 'ready', null);
   const order = orders.find(o => o.orderId === orderId);
   if (order) {
-    const msg = `🎉 *Order Ready — Pearl*\n\nHi ${order.name}! Your order #${orderId} is ready.\nPlease collect it from the counter! 🍽️`;
+    // Opens WhatsApp with customer's number — owner just presses Send
+    const msg = `🍽️ *Order Ready — Pearl*\n\n`
+      + `Hi ${order.name}! Your order is ready and being served to your table shortly.\n\n`
+      + `🪑 Table: ${order.table}\n`
+      + `🆔 Order: #${orderId}\n\n`
+      + `Enjoy your meal! Thank you for dining with us 😊🙏`;
     window.open(`https://wa.me/91${order.phone}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 }
