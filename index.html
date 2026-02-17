@@ -87,48 +87,58 @@
     .note-text{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
 
     /* ── PAYMENT SCREEN ── */
+    /* PAYMENT SCREEN */
     .pay-header{text-align:center;margin-bottom:20px;}
-    .pay-amount{font-family:'Playfair Display',serif;font-size:52px;color:var(--gold);line-height:1;}
-    .pay-amount-label{font-size:13px;color:var(--muted);margin-top:4px;}
+    .pay-amount{font-family:'Playfair Display',serif;font-size:64px;color:var(--gold);line-height:1;letter-spacing:-2px;}
+    .pay-amount-label{font-size:13px;color:var(--muted);margin-top:6px;}
+    .pay-remember{font-size:12px;color:var(--orange);margin-top:8px;font-weight:600;letter-spacing:0.3px;}
 
-    /* BIG UPI ID BOX - the main thing customer needs */
-    .upi-main-box{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:20px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden;}
-    .upi-main-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;}
-    .upi-main-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
-    .upi-main-id{font-size:24px;font-weight:700;color:var(--cream);margin-bottom:14px;letter-spacing:0.5px;}
-    .copy-big-btn{background:var(--gold);color:#0e0c0a;border:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.1s;}
-    .copy-big-btn:active{transform:scale(0.97);}
-    .copy-big-btn.copied{background:var(--green);color:white;}
+    /* UPI APP BUTTONS */
+    .upi-apps-label{font-size:12px;color:var(--muted);text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;}
+    .upi-apps-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+    .upi-app-btn{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color 0.2s,transform 0.1s;width:100%;}
+    .upi-app-btn:active{border-color:var(--gold);transform:scale(0.97);}
+    .upi-app-btn.tapped{border-color:var(--gold);background:#251f15;}
+    .upi-app-icon{font-size:26px;}
+    .upi-app-name{font-size:12px;font-weight:600;color:var(--cream);}
 
-    /* STEPS */
-    .how-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:16px;}
-    .how-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-    .how-row{display:flex;gap:12px;align-items:flex-start;padding:5px 0;}
-    .how-row:not(:last-child){border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:5px;}
-    .how-num{width:22px;height:22px;background:rgba(201,168,76,0.12);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
-    .how-text{font-size:13px;color:var(--muted);line-height:1.5;}
-    .how-text strong{color:var(--cream);}
+    /* COUNTDOWN */
+    .countdown-box{display:none;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:16px;text-align:center;margin-bottom:14px;}
+    .countdown-box.show{display:block;}
+    .countdown-top{font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .countdown-num{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold);line-height:1;margin-bottom:4px;}
+    .countdown-sub{font-size:11px;color:var(--muted);}
+    .countdown-bar-wrap{background:var(--border);border-radius:100px;height:4px;margin-top:12px;overflow:hidden;}
+    .countdown-bar{height:4px;background:var(--gold);border-radius:100px;width:100%;transition:width 1s linear;}
+
+    /* UPI ID ROW */
+    .upi-id-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+    .upi-id-label{font-size:11px;color:var(--muted);margin-bottom:2px;}
+    .upi-id-val{font-size:14px;color:var(--cream);font-weight:600;}
+    .copy-btn{font-size:12px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);padding:5px 12px;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .copy-btn.copied{color:var(--green);background:rgba(76,175,125,0.1);border-color:rgba(76,175,125,0.3);}
+
+    /* PAID CONFIRM BOX */
+    .paid-box{display:none;background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:18px;margin-bottom:14px;text-align:center;animation:slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+    .paid-box.show{display:block;}
+    .paid-icon{font-size:40px;margin-bottom:8px;}
+    .paid-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+    .paid-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+    .btn-green{width:100%;background:var(--green);color:white;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .btn-green:active{transform:scale(0.98);}
 
     /* OR DIVIDER */
-    .or-div{display:flex;align-items:center;gap:12px;margin:16px 0;}
+    .or-div{display:flex;align-items:center;gap:12px;margin:14px 0;}
     .or-line{flex:1;height:1px;background:var(--border);}
     .or-text{font-size:12px;color:var(--muted);}
 
     /* CASH BUTTON */
     .cash-option{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:border-color 0.2s;width:100%;font-family:'DM Sans',sans-serif;}
     .cash-option:active{border-color:var(--gold);}
-    .cash-icon{font-size:30px;flex-shrink:0;}
+    .cash-icon{font-size:28px;flex-shrink:0;}
     .cash-info{text-align:left;}
     .cash-title{font-size:15px;font-weight:600;color:var(--cream);}
     .cash-sub{font-size:12px;color:var(--muted);margin-top:2px;}
-
-    /* PAID CONFIRM BOX */
-    .paid-box{display:none;background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:18px;margin-top:16px;text-align:center;}
-    .paid-box.show{display:block;}
-    .paid-icon{font-size:36px;margin-bottom:8px;}
-    .paid-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px;}
-    .paid-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
-    .btn-green{width:100%;background:var(--green);color:white;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
 
     /* STATUS */
     .status-screen{text-align:center;padding:10px 0;}
@@ -232,57 +242,62 @@
 
     <!-- STEP 2: PAYMENT -->
     <div id="step2" style="display:none">
+
+      <!-- BIG AMOUNT — customer must remember this -->
       <div class="pay-header">
         <div class="pay-amount">&#8377;<span id="payAmount">0</span></div>
-        <div class="pay-amount-label">Amount to Pay</div>
+        <div class="pay-amount-label">Total Amount to Pay</div>
+        <div class="pay-remember">&#9888;&#65039; Remember this amount before opening your UPI app</div>
       </div>
 
-      <!-- PRIMARY: Scan table QR -->
-      <div class="upi-main-box">
-        <div class="upi-main-label">Easiest Way</div>
-        <div style="font-size:34px;margin:8px 0;">📲</div>
-        <div style="font-size:15px;font-weight:600;color:#f5efe6;margin-bottom:6px;">Scan the PAY QR on your table</div>
-        <div style="font-size:12px;color:#7a7060;line-height:1.6;margin-bottom:14px;">Open GPay / PhonePe / Paytm<br>Tap Scan &#8594; point at <strong style="color:#c9a84c">orange PAY QR</strong> on table &#8594; pay</div>
-        <button class="copy-big-btn" onclick="showPaidBox()">&#10003; I have Paid via UPI</button>
+      <!-- UPI APP BUTTONS — tap to open app, countdown starts -->
+      <p class="upi-apps-label">Open your UPI app</p>
+      <div class="upi-apps-row">
+        <button class="upi-app-btn" id="btn-gpay" onclick="openUPIApp('gpay')">
+          <div class="upi-app-icon">🟢</div>
+          <div class="upi-app-name">GPay</div>
+        </button>
+        <button class="upi-app-btn" id="btn-phonepe" onclick="openUPIApp('phonepe')">
+          <div class="upi-app-icon">🟣</div>
+          <div class="upi-app-name">PhonePe</div>
+        </button>
+        <button class="upi-app-btn" id="btn-paytm" onclick="openUPIApp('paytm')">
+          <div class="upi-app-icon">🔵</div>
+          <div class="upi-app-name">Paytm</div>
+        </button>
       </div>
 
-      <!-- SECONDARY: Copy UPI ID -->
-      <div class="how-box">
-        <div class="how-title">Or pay by entering UPI ID</div>
-        <div class="how-row">
-          <div class="how-num">1</div>
-          <div class="how-text">Tap <strong>Copy</strong> below to copy the UPI ID</div>
-        </div>
-        <div class="how-row">
-          <div class="how-num">2</div>
-          <div class="how-text">Open any UPI app &#8594; Send Money &#8594; Paste ID &#8594; Enter &#8377;<span id="howAmount">0</span></div>
-        </div>
-        <div class="how-row">
-          <div class="how-num">3</div>
-          <div class="how-text">Come back and tap <strong>I have Paid</strong></div>
+      <!-- COUNTDOWN — shown after tapping an app button -->
+      <div class="countdown-box" id="countdownBox">
+        <div class="countdown-top">Scan the <strong>PAY QR on your table</strong> and pay &#8377;<span id="cdAmount">0</span></div>
+        <div class="countdown-num" id="cdNum">30</div>
+        <div class="countdown-sub">seconds — then come back here</div>
+        <div class="countdown-bar-wrap">
+          <div class="countdown-bar" id="cdBar"></div>
         </div>
       </div>
 
-      <div class="upi-id-row">
-        <div>
-          <div class="upi-id-label">UPI ID</div>
-          <div class="upi-id-val" id="upiIdDisplay">8130560938@ybl</div>
-        </div>
-        <button class="copy-btn" id="copyBtn" onclick="copyAndShowConfirm()">Copy</button>
-      </div>
-
-      <!-- Paid confirm -->
+      <!-- I'VE PAID — hidden, auto-appears after 30s -->
       <div class="paid-box" id="paidBox">
         <div class="paid-icon">&#9989;</div>
-        <div class="paid-title">Payment done?</div>
-        <div class="paid-sub">Once your UPI payment is successful, tap below. Owner will verify from their phone.</div>
-        <button class="btn-green" onclick="submitOrder('upi')">Yes, I have Paid &#8212; Place Order</button>
-        <button class="btn-ghost" onclick="hidePaid()">&#8592; Not yet</button>
+        <div class="paid-title">Payment successful?</div>
+        <div class="paid-sub">Tap below to place your order. Owner will verify the payment.</div>
+        <button class="btn-green" onclick="submitOrder('upi')">&#10003;&nbsp; I've Paid — Place My Order</button>
+        <button class="btn-ghost" onclick="hidePaid()">&#8592; Not yet, go back</button>
+      </div>
+
+      <!-- UPI ID for manual entry -->
+      <div class="upi-id-row">
+        <div>
+          <div class="upi-id-label">Or pay by UPI ID manually</div>
+          <div class="upi-id-val" id="upiIdDisplay">8130560938@ybl</div>
+        </div>
+        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy</button>
       </div>
 
       <div class="or-div">
         <div class="or-line"></div>
-        <div class="or-text">or skip payment</div>
+        <div class="or-text">or</div>
         <div class="or-line"></div>
       </div>
 
@@ -342,7 +357,7 @@ const MENU = [
 ];
 
 const cart={};
-let currentOrderId=null, pollTimer=null;
+let currentOrderId=null, pollTimer=null, countdownTimer=null;
 
 function renderItems(items,cid){
   document.getElementById(cid).innerHTML=items.map(i=>`
@@ -429,34 +444,83 @@ function goToPayment(){
   if(ha2)ha2.textContent=total;
   document.getElementById('upiIdDisplay').textContent=UPI_ID;
   document.getElementById('paidBox').classList.remove('show');
+  document.getElementById('countdownBox').classList.remove('show');
+  document.querySelectorAll('.upi-app-btn').forEach(b=>b.classList.remove('tapped'));
+  if(countdownTimer){clearInterval(countdownTimer);countdownTimer=null;}
   showStep(2);
 }
 
-// Copy UPI ID and show "I've Paid" confirmation
-function copyAndShowConfirm(){
-  navigator.clipboard.writeText(UPI_ID).then(()=>{
-    const b=document.getElementById('copyBtn');
-    b.textContent='✓ Copied!';
-    b.classList.add('copied');
-    setTimeout(()=>{
-      b.textContent='📋 Copy UPI ID';
-      b.classList.remove('copied');
-    },3000);
-    // Show paid confirm after 1 second — gives time for app to open
-    setTimeout(()=>{
+// Open UPI app — countdown starts, paid button auto-appears after 30s
+function openUPIApp(app) {
+  // Mark button as tapped
+  document.querySelectorAll('.upi-app-btn').forEach(b => b.classList.remove('tapped'));
+  document.getElementById('btn-' + app).classList.add('tapped');
+
+  // Show countdown box
+  const total = document.getElementById('payAmount').textContent;
+  document.getElementById('cdAmount').textContent = total;
+  document.getElementById('countdownBox').classList.add('show');
+  document.getElementById('paidBox').classList.remove('show');
+
+  // Clear any existing timer
+  if (countdownTimer) clearInterval(countdownTimer);
+
+  // Start 30s countdown
+  let secs = 30;
+  document.getElementById('cdNum').textContent = secs;
+  document.getElementById('cdBar').style.width = '100%';
+
+  countdownTimer = setInterval(() => {
+    secs--;
+    document.getElementById('cdNum').textContent = secs;
+    document.getElementById('cdBar').style.width = (secs / 30 * 100) + '%';
+
+    if (secs <= 0) {
+      clearInterval(countdownTimer);
+      // Auto-reveal I've Paid button
+      document.getElementById('countdownBox').classList.remove('show');
       document.getElementById('paidBox').classList.add('show');
-      document.getElementById('paidBox').scrollIntoView({behavior:'smooth',block:'nearest'});
-    },1000);
-  }).catch(()=>{
-    // Fallback if clipboard not available
-    prompt('Copy this UPI ID:',UPI_ID);
-    setTimeout(()=>{
-      document.getElementById('paidBox').classList.add('show');
-    },500);
-  });
+      document.getElementById('paidBox').scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  }, 1000);
+
+  // Try to open the app (works on Android, silently fails on iOS — that's fine)
+  const amount = total;
+  const upiStr = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
+  if (app === 'gpay')    window.location.href = `gpay://upi/pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
+  else if (app === 'phonepe') window.location.href = `phonepe://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
+  else if (app === 'paytm')   window.location.href = `paytmmp://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR`;
 }
 
-function showPaidBox(){document.getElementById('paidBox').classList.add('show');document.getElementById('paidBox').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function copyUPI() {
+  navigator.clipboard.writeText(UPI_ID).then(() => {
+    const b = document.getElementById('copyBtn');
+    b.textContent = 'Copied!'; b.classList.add('copied');
+    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('copied'); }, 2500);
+    // Also start countdown when they copy UPI ID manually
+    if (!document.getElementById('countdownBox').classList.contains('show')) {
+      const total = document.getElementById('payAmount').textContent;
+      document.getElementById('cdAmount').textContent = total;
+      document.getElementById('countdownBox').classList.add('show');
+      if (countdownTimer) clearInterval(countdownTimer);
+      let secs = 30;
+      document.getElementById('cdNum').textContent = secs;
+      document.getElementById('cdBar').style.width = '100%';
+      countdownTimer = setInterval(() => {
+        secs--;
+        document.getElementById('cdNum').textContent = secs;
+        document.getElementById('cdBar').style.width = (secs / 30 * 100) + '%';
+        if (secs <= 0) {
+          clearInterval(countdownTimer);
+          document.getElementById('countdownBox').classList.remove('show');
+          document.getElementById('paidBox').classList.add('show');
+          document.getElementById('paidBox').scrollIntoView({behavior:'smooth', block:'nearest'});
+        }
+      }, 1000);
+    }
+  }).catch(() => { prompt('Copy this UPI ID:', UPI_ID); });
+}
+
 function hidePaid(){
   document.getElementById('paidBox').classList.remove('show');
 }
