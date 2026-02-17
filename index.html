@@ -10,12 +10,11 @@
       --bg:#0e0c0a;--surface:#1a1713;--card:#211e1a;
       --gold:#c9a84c;--gold-light:#e8cc80;--cream:#f5efe6;
       --muted:#7a7060;--border:#2e2a24;
-      --green:#4caf7d;--orange:#e8954a;--red:#e05a5a;
+      --green:#4caf7d;--orange:#e8954a;
     }
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
     body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:120px;}
 
-    /* HEADER */
     .header{background:linear-gradient(160deg,#1a1410 0%,#0e0c0a 100%);padding:36px 20px 28px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
     .header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;}
     .header-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;}
@@ -24,14 +23,12 @@
     .header-sub{font-size:13px;color:var(--muted);margin-top:8px;}
     .table-badge{display:inline-block;margin-top:14px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:6px 18px;border-radius:100px;font-size:12px;letter-spacing:1px;}
 
-    /* TABS */
     .tabs-wrap{overflow-x:auto;padding:18px 20px 0;scrollbar-width:none;}
     .tabs-wrap::-webkit-scrollbar{display:none;}
     .tabs{display:flex;gap:8px;width:max-content;}
     .tab{padding:8px 18px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;border:1px solid var(--border);color:var(--muted);background:transparent;white-space:nowrap;font-family:'DM Sans',sans-serif;}
     .tab.active{background:var(--gold);color:#0e0c0a;border-color:var(--gold);font-weight:600;}
 
-    /* MENU */
     .section-title{font-family:'Playfair Display',serif;font-size:22px;padding:20px 20px 4px;color:var(--cream);font-style:italic;}
     .section-desc{font-size:12px;color:var(--muted);padding:0 20px 16px;}
     .menu-section{display:none;}
@@ -40,7 +37,6 @@
     .divider-line{flex:1;height:1px;background:var(--border);}
     .divider-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;}
 
-    /* ITEM CARD */
     .item-card{margin:0 16px 12px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;transition:border-color 0.2s;position:relative;overflow:hidden;}
     .item-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.04) 0%,transparent 60%);pointer-events:none;}
     .item-card.selected{border-color:var(--gold);background:#251f15;}
@@ -56,7 +52,6 @@
     .qty-num{font-size:14px;font-weight:600;color:var(--cream);min-width:24px;text-align:center;}
     .add-btn{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
 
-    /* CART BAR */
     .cart-bar{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:14px 20px 20px;z-index:100;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);}
     .cart-bar.visible{transform:translateY(0);}
     .cart-bar-inner{display:flex;align-items:center;gap:12px;}
@@ -66,7 +61,6 @@
     .cart-btn{background:var(--gold);color:#0e0c0a;border:none;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
     .cart-btn:active{transform:scale(0.97);}
 
-    /* MODAL */
     .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;display:none;align-items:flex-end;justify-content:center;}
     .modal-overlay.open{display:flex;}
     .modal{background:var(--surface);border-radius:24px 24px 0 0;padding:28px 20px 40px;width:100%;max-width:480px;border-top:1px solid var(--border);animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);max-height:92vh;overflow-y:auto;}
@@ -75,7 +69,6 @@
     .modal-title{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px;color:var(--cream);}
     .modal-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
 
-    /* ORDER SUMMARY */
     .order-box{background:var(--card);border-radius:12px;padding:14px;margin-bottom:20px;border:1px solid var(--border);}
     .orow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px;}
     .orow:not(:last-child){border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:4px;}
@@ -84,72 +77,70 @@
     .oprice{color:var(--gold);font-weight:500;}
     .ototal{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-weight:600;font-size:15px;}
 
-    /* FORM */
     .flabel{font-size:12px;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;display:block;}
     .finput{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--cream);font-size:15px;font-family:'DM Sans',sans-serif;margin-bottom:14px;outline:none;transition:border-color 0.2s;}
     .finput:focus{border-color:var(--gold);}
     .finput::placeholder{color:var(--muted);}
-    .btn-gold{width:100%;background:var(--gold);color:#0e0c0a;border:none;padding:16px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.1s;}
+    .btn-gold{width:100%;background:var(--gold);color:#0e0c0a;border:none;padding:16px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
     .btn-gold:active{transform:scale(0.98);}
+    .btn-ghost{width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:13px;border-radius:12px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:10px;}
     .note-text{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
 
     /* ── PAYMENT SCREEN ── */
-    .pay-amount-box{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);border-radius:14px;padding:18px;text-align:center;margin-bottom:20px;}
-    .pay-big{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold);line-height:1;}
-    .pay-lbl{font-size:12px;color:var(--muted);margin-top:4px;}
-    .pay-upi-label{font-size:13px;color:var(--muted);margin-bottom:10px;font-weight:500;}
+    .pay-header{text-align:center;margin-bottom:20px;}
+    .pay-amount{font-family:'Playfair Display',serif;font-size:52px;color:var(--gold);line-height:1;}
+    .pay-amount-label{font-size:13px;color:var(--muted);margin-top:4px;}
 
-    /* UPI APP BUTTONS */
-    .upi-apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-    .upi-app-btn{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;text-decoration:none;}
-    .upi-app-btn:active{transform:scale(0.97);border-color:var(--gold);}
-    .upi-app-icon{font-size:28px;}
-    .upi-app-name{font-size:13px;font-weight:600;color:var(--cream);}
-    .upi-app-sub{font-size:11px;color:var(--muted);}
+    /* BIG UPI ID BOX - the main thing customer needs */
+    .upi-main-box{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:20px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden;}
+    .upi-main-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;}
+    .upi-main-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+    .upi-main-id{font-size:24px;font-weight:700;color:var(--cream);margin-bottom:14px;letter-spacing:0.5px;}
+    .copy-big-btn{background:var(--gold);color:#0e0c0a;border:none;padding:12px 28px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.1s;}
+    .copy-big-btn:active{transform:scale(0.97);}
+    .copy-big-btn.copied{background:var(--green);color:white;}
 
-    /* UPI ID COPY ROW */
-    .upi-id-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;}
-    .upi-id-label{font-size:11px;color:var(--muted);margin-bottom:2px;}
-    .upi-id-val{font-size:15px;color:var(--cream);font-weight:600;}
-    .copy-btn{font-size:12px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);padding:6px 14px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-    .copy-btn.copied{color:var(--green);background:rgba(76,175,125,0.1);border-color:rgba(76,175,125,0.3);}
+    /* STEPS */
+    .how-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:16px;}
+    .how-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+    .how-row{display:flex;gap:12px;align-items:flex-start;padding:5px 0;}
+    .how-row:not(:last-child){border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:5px;}
+    .how-num{width:22px;height:22px;background:rgba(201,168,76,0.12);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+    .how-text{font-size:13px;color:var(--muted);line-height:1.5;}
+    .how-text strong{color:var(--cream);}
 
-    /* DIVIDER WITH TEXT */
-    .or-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+    /* OR DIVIDER */
+    .or-div{display:flex;align-items:center;gap:12px;margin:16px 0;}
     .or-line{flex:1;height:1px;background:var(--border);}
-    .or-text{font-size:12px;color:var(--muted);white-space:nowrap;}
+    .or-text{font-size:12px;color:var(--muted);}
 
-    /* CASH OPTION */
-    .cash-btn{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color 0.2s;margin-bottom:4px;}
-    .cash-btn:active{border-color:var(--gold);}
-    .cash-icon{font-size:28px;flex-shrink:0;}
+    /* CASH BUTTON */
+    .cash-option{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:border-color 0.2s;width:100%;font-family:'DM Sans',sans-serif;}
+    .cash-option:active{border-color:var(--gold);}
+    .cash-icon{font-size:30px;flex-shrink:0;}
     .cash-info{text-align:left;}
     .cash-title{font-size:15px;font-weight:600;color:var(--cream);}
     .cash-sub{font-size:12px;color:var(--muted);margin-top:2px;}
 
-    /* I'VE PAID — shown after tapping a UPI app */
-    .paid-confirm{display:none;background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:20px;text-align:center;margin-top:16px;}
-    .paid-confirm.show{display:block;}
-    .paid-confirm-icon{font-size:40px;margin-bottom:10px;}
-    .paid-confirm-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px;}
-    .paid-confirm-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+    /* PAID CONFIRM BOX */
+    .paid-box{display:none;background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:18px;margin-top:16px;text-align:center;}
+    .paid-box.show{display:block;}
+    .paid-icon{font-size:36px;margin-bottom:8px;}
+    .paid-title{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+    .paid-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
     .btn-green{width:100%;background:var(--green);color:white;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
-    .btn-ghost{width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:12px;border-radius:12px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;}
 
-    /* STATUS SCREEN */
+    /* STATUS */
     .status-screen{text-align:center;padding:10px 0;}
     .s-oid{font-size:12px;color:var(--muted);letter-spacing:1px;margin-bottom:16px;}
     .s-emoji{font-size:60px;margin-bottom:16px;display:block;animation:pulse 2s infinite;}
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
     .s-title{font-family:'Playfair Display',serif;font-size:24px;margin-bottom:8px;}
+    .pay-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:16px;}
+    .pay-tag.upi{background:rgba(74,158,237,0.12);color:#4a9eed;border:1px solid rgba(74,158,237,0.25);}
+    .pay-tag.cash{background:rgba(232,149,74,0.12);color:var(--orange);border:1px solid rgba(232,149,74,0.25);}
     .s-msg{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
-
-    /* PAYMENT METHOD TAG on status */
-    .pay-method-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;margin-bottom:20px;}
-    .pay-method-tag.upi{background:rgba(74,158,237,0.12);color:#4a9eed;border:1px solid rgba(74,158,237,0.25);}
-    .pay-method-tag.cash{background:rgba(232,149,74,0.12);color:var(--orange);border:1px solid rgba(232,149,74,0.25);}
-
-    .steps-track{display:flex;justify-content:center;margin-bottom:28px;}
+    .steps-track{display:flex;justify-content:center;margin-bottom:24px;}
     .st-item{display:flex;flex-direction:column;align-items:center;position:relative;flex:1;max-width:80px;}
     .st-item:not(:last-child)::after{content:'';position:absolute;top:12px;left:calc(50% + 12px);right:calc(-50% + 12px);height:2px;background:var(--border);z-index:0;}
     .st-item.done:not(:last-child)::after{background:var(--green);}
@@ -160,13 +151,12 @@
     .st-label{font-size:10px;color:var(--muted);text-align:center;}
     .st-item.done .st-label{color:var(--green);}
     .st-item.active .st-label{color:var(--gold);}
-
-    .eta-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:14px 20px;margin-bottom:20px;display:none;}
+    .eta-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:14px;margin-bottom:20px;display:none;}
     .eta-box.show{display:block;}
     .eta-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
     .eta-val{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);}
     .eta-sub{font-size:12px;color:var(--muted);}
-    .ready-box{background:rgba(76,175,125,0.08);border:1px solid rgba(76,175,125,0.25);border-radius:12px;padding:16px;margin-bottom:16px;font-size:14px;display:none;}
+    .ready-box{background:rgba(76,175,125,0.08);border:1px solid rgba(76,175,125,0.25);border-radius:12px;padding:16px;margin-bottom:16px;display:none;}
     .ready-box.show{display:block;}
     .live-dot{display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;animation:lp 1.5s infinite;margin-right:6px;vertical-align:middle;}
     @keyframes lp{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -211,7 +201,6 @@
   <div id="mealItems"></div>
 </div>
 
-<!-- CART BAR -->
 <div class="cart-bar" id="cartBar">
   <div class="cart-bar-inner">
     <div class="cart-info">
@@ -222,12 +211,11 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-handle"></div>
 
-    <!-- STEP 1: CUSTOMER DETAILS -->
+    <!-- STEP 1 -->
     <div id="step1">
       <p class="modal-title">Your Order</p>
       <p class="modal-sub">Enter your details to continue</p>
@@ -244,105 +232,87 @@
 
     <!-- STEP 2: PAYMENT -->
     <div id="step2" style="display:none">
-      <p class="modal-title">Choose Payment</p>
-      <p class="modal-sub">Pay now or at the counter</p>
-
-      <!-- AMOUNT -->
-      <div class="pay-amount-box">
-        <div class="pay-big">₹<span id="payAmount">0</span></div>
-        <div class="pay-lbl">Total Amount</div>
+      <div class="pay-header">
+        <div class="pay-amount">&#8377;<span id="payAmount">0</span></div>
+        <div class="pay-amount-label">Amount to Pay</div>
       </div>
 
-      <!-- UPI APPS — open directly on same phone -->
-      <p class="pay-upi-label">Pay online via UPI</p>
-      <div class="upi-apps-grid">
-        <a class="upi-app-btn" id="gpayBtn" onclick="openedUPI()">
-          <div class="upi-app-icon">🟢</div>
-          <div class="upi-app-name">Google Pay</div>
-          <div class="upi-app-sub">Tap to open</div>
-        </a>
-        <a class="upi-app-btn" id="phonepeBtn" onclick="openedUPI()">
-          <div class="upi-app-icon">🟣</div>
-          <div class="upi-app-name">PhonePe</div>
-          <div class="upi-app-sub">Tap to open</div>
-        </a>
-        <a class="upi-app-btn" id="paytmBtn" onclick="openedUPI()">
-          <div class="upi-app-icon">🔵</div>
-          <div class="upi-app-name">Paytm</div>
-          <div class="upi-app-sub">Tap to open</div>
-        </a>
-        <a class="upi-app-btn" id="bhimBtn" onclick="openedUPI()">
-          <div class="upi-app-icon">🇮🇳</div>
-          <div class="upi-app-name">BHIM / Other</div>
-          <div class="upi-app-sub">Any UPI app</div>
-        </a>
+      <!-- PRIMARY: Scan table QR -->
+      <div class="upi-main-box">
+        <div class="upi-main-label">Easiest Way</div>
+        <div style="font-size:34px;margin:8px 0;">📲</div>
+        <div style="font-size:15px;font-weight:600;color:#f5efe6;margin-bottom:6px;">Scan the PAY QR on your table</div>
+        <div style="font-size:12px;color:#7a7060;line-height:1.6;margin-bottom:14px;">Open GPay / PhonePe / Paytm<br>Tap Scan &#8594; point at <strong style="color:#c9a84c">orange PAY QR</strong> on table &#8594; pay</div>
+        <button class="copy-big-btn" onclick="showPaidBox()">&#10003; I have Paid via UPI</button>
       </div>
 
-      <!-- UPI ID to manually enter in app -->
+      <!-- SECONDARY: Copy UPI ID -->
+      <div class="how-box">
+        <div class="how-title">Or pay by entering UPI ID</div>
+        <div class="how-row">
+          <div class="how-num">1</div>
+          <div class="how-text">Tap <strong>Copy</strong> below to copy the UPI ID</div>
+        </div>
+        <div class="how-row">
+          <div class="how-num">2</div>
+          <div class="how-text">Open any UPI app &#8594; Send Money &#8594; Paste ID &#8594; Enter &#8377;<span id="howAmount">0</span></div>
+        </div>
+        <div class="how-row">
+          <div class="how-num">3</div>
+          <div class="how-text">Come back and tap <strong>I have Paid</strong></div>
+        </div>
+      </div>
+
       <div class="upi-id-row">
         <div>
-          <div class="upi-id-label">Or enter UPI ID manually</div>
-          <div class="upi-id-val" id="upiIdVal">pearl@upi</div>
+          <div class="upi-id-label">UPI ID</div>
+          <div class="upi-id-val" id="upiIdDisplay">8130560938@ybl</div>
         </div>
-        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy</button>
+        <button class="copy-btn" id="copyBtn" onclick="copyAndShowConfirm()">Copy</button>
       </div>
 
-      <!-- After tapping UPI app — confirm paid -->
-      <div class="paid-confirm" id="paidConfirm">
-        <div class="paid-confirm-icon">✅</div>
-        <div class="paid-confirm-title">Payment done?</div>
-        <div class="paid-confirm-sub">If your payment was successful, tap below to place your order. The owner will verify the payment.</div>
-        <button class="btn-green" onclick="submitOrder('upi')">Yes, I've Paid — Place Order</button>
-        <button class="btn-ghost" onclick="hidePaidConfirm()">← Go Back</button>
+      <!-- Paid confirm -->
+      <div class="paid-box" id="paidBox">
+        <div class="paid-icon">&#9989;</div>
+        <div class="paid-title">Payment done?</div>
+        <div class="paid-sub">Once your UPI payment is successful, tap below. Owner will verify from their phone.</div>
+        <button class="btn-green" onclick="submitOrder('upi')">Yes, I have Paid &#8212; Place Order</button>
+        <button class="btn-ghost" onclick="hidePaid()">&#8592; Not yet</button>
       </div>
 
-      <!-- OR DIVIDER -->
-      <div class="or-divider" id="orDivider">
+      <div class="or-div">
         <div class="or-line"></div>
-        <div class="or-text">OR pay at counter</div>
+        <div class="or-text">or skip payment</div>
         <div class="or-line"></div>
       </div>
 
-      <!-- CASH OPTION -->
-      <button class="cash-btn" id="cashBtn" onclick="submitOrder('cash')">
-        <div class="cash-icon">💵</div>
+      <button class="cash-option" onclick="submitOrder('cash')">
+        <div class="cash-icon">&#128181;</div>
         <div class="cash-info">
           <div class="cash-title">Pay at Counter</div>
-          <div class="cash-sub">Order placed now, pay when food arrives</div>
+          <div class="cash-sub">Order now, pay when food arrives</div>
         </div>
       </button>
     </div>
 
-    <!-- STEP 3: LIVE ORDER STATUS -->
+    <!-- STEP 3: STATUS -->
     <div id="step3" style="display:none">
       <div class="status-screen">
         <div class="s-oid" id="sOid"></div>
         <span class="s-emoji" id="sEmoji">⏳</span>
         <p class="s-title" id="sTitle">Order Placed!</p>
-
-        <!-- Shows how customer paid -->
-        <div class="pay-method-tag" id="payTag"></div>
-
+        <div class="pay-tag" id="payTag"></div>
         <p class="s-msg" id="sMsg">Waiting for Pearl to confirm...<br><span class="live-dot"></span>Live updates</p>
 
         <div class="steps-track">
-          <div class="st-item active" id="st1">
-            <div class="st-dot">✓</div>
-            <div class="st-label">Placed</div>
-          </div>
-          <div class="st-item" id="st2">
-            <div class="st-dot">👨‍🍳</div>
-            <div class="st-label">Accepted</div>
-          </div>
-          <div class="st-item" id="st3">
-            <div class="st-dot">🍽️</div>
-            <div class="st-label">Ready</div>
-          </div>
+          <div class="st-item active" id="st1"><div class="st-dot">✓</div><div class="st-label">Placed</div></div>
+          <div class="st-item" id="st2"><div class="st-dot">👨‍🍳</div><div class="st-label">Accepted</div></div>
+          <div class="st-item" id="st3"><div class="st-dot">🍽️</div><div class="st-label">Ready</div></div>
         </div>
 
         <div class="eta-box" id="etaBox">
           <div class="eta-lbl">Estimated Time</div>
-          <div class="eta-val" id="etaVal">— mins</div>
+          <div class="eta-val" id="etaVal">—</div>
           <div class="eta-sub">Your food is being prepared 👨‍🍳</div>
         </div>
 
@@ -350,7 +320,7 @@
           🎉 Your order is ready! Please collect from the counter.
         </div>
 
-        <button class="btn-ghost" style="margin-top:8px" onclick="closeModal()">← Back to Menu</button>
+        <button class="btn-ghost" onclick="closeModal()">← Back to Menu</button>
       </div>
     </div>
 
@@ -358,12 +328,10 @@
 </div>
 
 <script>
-// ─── CONFIG — CHANGE THESE ─────────────────────────────────
-const OWNER_WHATSAPP = '918130560938';   // 91 + owner number
-const UPI_ID         = 'decorbajar@ybl';      // Real UPI ID of restaurant
+const OWNER_WHATSAPP = '919999999999';
+const UPI_ID         = '8130560938@ybl';
 const UPI_NAME       = 'Pearl Restaurant';
 const SHEET_URL      = 'https://script.google.com/macros/s/AKfycbzXgaSgv8FPV-mwiudhqInPSD3LMMhR9B3Zf7YHQ2PAxM9T_n-2u-kvqm-AGad3Euo_SQ/exec';
-// ──────────────────────────────────────────────────────────
 
 const MENU = [
   {id:1,name:'Chai',       price:50, emoji:'🍵',cat:'drinks',desc:'Classic Indian milk tea'},
@@ -374,9 +342,8 @@ const MENU = [
 ];
 
 const cart={};
-let currentOrderId=null, pollTimer=null, currentPayMethod=null;
+let currentOrderId=null, pollTimer=null;
 
-// ── RENDER MENU ────────────────────────────────────────────
 function renderItems(items,cid){
   document.getElementById(cid).innerHTML=items.map(i=>`
     <div class="item-card" id="card-${i.id}">
@@ -429,7 +396,6 @@ function switchTab(cat,el){
   document.getElementById(`sec-${cat}`).classList.add('active');
 }
 
-// ── MODAL ──────────────────────────────────────────────────
 function openModal(){
   if(!Object.keys(cart).length) return;
   let html='',total=0;
@@ -449,7 +415,6 @@ function closeModal(){
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 function showStep(n){[1,2,3].forEach(i=>document.getElementById(`step${i}`).style.display=i===n?'block':'none');}
 
-// ── STEP 1 → PAYMENT ──────────────────────────────────────
 function goToPayment(){
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
@@ -457,53 +422,48 @@ function goToPayment(){
   if(!name){alert('Please enter your name');return;}
   if(phone.length!==10){alert('Enter a valid 10-digit number');return;}
   if(!table){alert('Please enter your table number');return;}
-
   const total=Object.keys(cart).reduce((s,id)=>s+MENU.find(m=>m.id==id).price*cart[id],0);
   document.getElementById('payAmount').textContent=total;
-  document.getElementById('upiIdVal').textContent=UPI_ID;
-
-  // Set UPI deep links — opens the app directly on customer's phone
-  const upiBase=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR&tn=PearlOrder`;
-  document.getElementById('gpayBtn').href=`gpay://upi/pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
-  document.getElementById('phonepeBtn').href=`phonepe://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
-  document.getElementById('paytmBtn').href=`paytmmp://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
-  document.getElementById('bhimBtn').href=upiBase;
-
-  // Hide paid confirm box initially
-  document.getElementById('paidConfirm').classList.remove('show');
-  document.getElementById('orDivider').style.display='flex';
-  document.getElementById('cashBtn').style.display='flex';
-
+  document.getElementById('howAmount').textContent=total;
+  const ha2=document.getElementById('howAmount2');
+  if(ha2)ha2.textContent=total;
+  document.getElementById('upiIdDisplay').textContent=UPI_ID;
+  document.getElementById('paidBox').classList.remove('show');
   showStep(2);
 }
 
-// Called when any UPI app button is tapped
-function openedUPI(){
-  // Small delay to let the app open, then show "Did you pay?" confirmation
-  setTimeout(()=>{
-    document.getElementById('paidConfirm').classList.add('show');
-    // Scroll to show the confirm box
-    document.getElementById('paidConfirm').scrollIntoView({behavior:'smooth',block:'center'});
-  }, 1500);
-}
-
-function hidePaidConfirm(){
-  document.getElementById('paidConfirm').classList.remove('show');
-}
-
-function copyUPI(){
+// Copy UPI ID and show "I've Paid" confirmation
+function copyAndShowConfirm(){
   navigator.clipboard.writeText(UPI_ID).then(()=>{
     const b=document.getElementById('copyBtn');
-    b.textContent='Copied ✓';b.classList.add('copied');
-    setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied');},2500);
+    b.textContent='✓ Copied!';
+    b.classList.add('copied');
+    setTimeout(()=>{
+      b.textContent='📋 Copy UPI ID';
+      b.classList.remove('copied');
+    },3000);
+    // Show paid confirm after 1 second — gives time for app to open
+    setTimeout(()=>{
+      document.getElementById('paidBox').classList.add('show');
+      document.getElementById('paidBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+    },1000);
+  }).catch(()=>{
+    // Fallback if clipboard not available
+    prompt('Copy this UPI ID:',UPI_ID);
+    setTimeout(()=>{
+      document.getElementById('paidBox').classList.add('show');
+    },500);
   });
 }
 
-// ── SUBMIT ORDER (UPI or Cash) ─────────────────────────────
-// Both go to owner dashboard immediately
-// Owner manually checks UPI app if payment method is UPI
+function showPaidBox(){document.getElementById('paidBox').classList.add('show');document.getElementById('paidBox').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function hidePaid(){
+  document.getElementById('paidBox').classList.remove('show');
+}
+
+// BOTH UPI and Cash go to dashboard immediately
+// Owner manually checks UPI notification on their phone
 function submitOrder(method){
-  currentPayMethod=method;
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
   const table=document.getElementById('tableNum').value.trim();
@@ -518,10 +478,10 @@ function submitOrder(method){
   currentOrderId='PRD'+Date.now().toString().slice(-6);
   const now=new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
 
-  // ── OWNER WhatsApp notification ──
-  // Clean message, shows payment method clearly so owner knows what to check
-  const payLabel = method==='upi'
-    ? '💳 UPI — check your UPI app to verify'
+  // Clean WhatsApp message to owner
+  // Shows payment method so owner knows what to check
+  const payLabel=method==='upi'
+    ? '💳 UPI — verify in your UPI app'
     : '💵 Cash — collect at table';
 
   const ownerMsg=
@@ -529,33 +489,29 @@ function submitOrder(method){
     `🆔 #${currentOrderId} | Table ${table}\n`+
     `👤 ${name} | 📱 ${phone}\n`+
     `${payLabel}\n\n`+
-    `*Items:*\n${itemsText}\n`+
+    `*Items ordered:*\n${itemsText}\n`+
     `💰 *Total: ₹${total}*`;
 
   window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(ownerMsg)}`,'_blank');
 
-  // ── Save to Google Sheet ──
+  // Save to sheet
   fetch(SHEET_URL,{
     method:'POST',mode:'no-cors',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({action:'neworder',orderId:currentOrderId,name,phone,table,items:itemsText,total,time:now,status:'pending',payment:method})
   });
 
-  // ── Show status screen ──
+  // Show status
   showStep(3);
   document.getElementById('sOid').textContent=`Order #${currentOrderId}`;
-
-  // Payment method tag shown to customer
   const tag=document.getElementById('payTag');
   if(method==='upi'){
-    tag.className='pay-method-tag upi';
-    tag.textContent='💳 Paid via UPI';
+    tag.className='pay-tag upi';tag.textContent='💳 Paid via UPI';
   } else {
-    tag.className='pay-method-tag cash';
-    tag.textContent='💵 Pay at Counter';
+    tag.className='pay-tag cash';tag.textContent='💵 Pay at Counter';
   }
 
-  // Start polling for status updates from owner dashboard
+  // Poll for live updates
   pollTimer=setInterval(()=>{
     fetch(`${SHEET_URL}?action=status&orderId=${currentOrderId}`)
       .then(r=>r.json()).then(updateStatusUI).catch(()=>{});
@@ -574,7 +530,6 @@ function submitOrder(method){
   updateCart();
 }
 
-// ── STATUS POLLING ─────────────────────────────────────────
 function updateStatusUI(data){
   if(!data||!data.status) return;
   const s=data.status.toLowerCase();
@@ -599,7 +554,6 @@ function updateStatusUI(data){
   }
 }
 
-// ── INIT ───────────────────────────────────────────────────
 renderItems(MENU,'allItems');
 renderItems(MENU.filter(m=>m.cat==='drinks'),'drinkItems');
 renderItems(MENU.filter(m=>m.cat==='snacks'),'snackItems');
