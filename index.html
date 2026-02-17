@@ -7,22 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0e0c0a;
-      --surface: #1a1713;
-      --card: #211e1a;
-      --gold: #c9a84c;
-      --gold-light: #e8cc80;
-      --cream: #f5efe6;
-      --muted: #7a7060;
-      --border: #2e2a24;
-      --green: #4caf7d;
-      --orange: #e8954a;
-      --red: #e05a5a;
+      --bg:#0e0c0a; --surface:#1a1713; --card:#211e1a;
+      --gold:#c9a84c; --gold-light:#e8cc80; --cream:#f5efe6;
+      --muted:#7a7060; --border:#2e2a24;
+      --green:#4caf7d; --orange:#e8954a; --red:#e05a5a;
     }
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { background:var(--bg); color:var(--cream); font-family:'DM Sans',sans-serif; min-height:100vh; padding-bottom:120px; }
 
-    /* HEADER */
     .header { background:linear-gradient(160deg,#1a1410 0%,#0e0c0a 100%); padding:36px 20px 28px; text-align:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
     .header::before { content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:300px; height:300px; background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%); pointer-events:none; }
     .header-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:500; }
@@ -31,14 +23,12 @@
     .header-sub { font-size:13px; color:var(--muted); margin-top:8px; }
     .table-badge { display:inline-block; margin-top:14px; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:var(--gold-light); padding:6px 18px; border-radius:100px; font-size:12px; letter-spacing:1px; }
 
-    /* TABS */
     .tabs-wrap { overflow-x:auto; padding:18px 20px 0; scrollbar-width:none; }
     .tabs-wrap::-webkit-scrollbar { display:none; }
     .tabs { display:flex; gap:8px; width:max-content; }
     .tab { padding:8px 18px; border-radius:100px; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s; border:1px solid var(--border); color:var(--muted); background:transparent; white-space:nowrap; font-family:'DM Sans',sans-serif; }
     .tab.active { background:var(--gold); color:#0e0c0a; border-color:var(--gold); font-weight:600; }
 
-    /* SECTION */
     .section-title { font-family:'Playfair Display',serif; font-size:22px; padding:20px 20px 4px; color:var(--cream); font-style:italic; }
     .section-desc { font-size:12px; color:var(--muted); padding:0 20px 16px; }
     .menu-section { display:none; }
@@ -47,7 +37,6 @@
     .divider-line { flex:1; height:1px; background:var(--border); }
     .divider-dot { width:5px; height:5px; background:var(--gold); border-radius:50%; }
 
-    /* ITEM CARD */
     .item-card { margin:0 16px 12px; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; display:flex; align-items:center; gap:14px; transition:border-color 0.2s; position:relative; overflow:hidden; }
     .item-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(201,168,76,0.04) 0%,transparent 60%); pointer-events:none; }
     .item-card.selected { border-color:var(--gold); background:#251f15; }
@@ -56,96 +45,95 @@
     .item-name { font-weight:500; font-size:15px; color:var(--cream); margin-bottom:3px; }
     .item-desc { font-size:12px; color:var(--muted); line-height:1.4; }
     .item-price { font-family:'Playfair Display',serif; font-size:17px; color:var(--gold); font-weight:600; white-space:nowrap; }
-    .item-price .rs { font-size:12px; }
+    .rs { font-size:12px; }
     .qty-control { display:flex; align-items:center; background:var(--surface); border-radius:100px; overflow:hidden; border:1px solid var(--border); margin-top:8px; width:fit-content; }
-    .qty-btn { width:30px; height:30px; background:transparent; border:none; color:var(--gold); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:300; }
+    .qty-btn { width:30px; height:30px; background:transparent; border:none; color:var(--gold); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
     .qty-btn:active { background:rgba(201,168,76,0.1); }
     .qty-num { font-size:14px; font-weight:600; color:var(--cream); min-width:24px; text-align:center; }
     .add-btn { background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3); color:var(--gold); padding:6px 14px; border-radius:100px; font-size:12px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; }
 
-    /* CART BAR */
     .cart-bar { position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--border); padding:14px 20px 20px; z-index:100; transform:translateY(100%); transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
     .cart-bar.visible { transform:translateY(0); }
     .cart-bar-inner { display:flex; align-items:center; gap:12px; }
     .cart-info { flex:1; }
     .cart-count { font-size:12px; color:var(--muted); margin-bottom:2px; }
     .cart-total { font-family:'Playfair Display',serif; font-size:20px; color:var(--cream); }
-    .cart-btn { background:var(--gold); color:#0e0c0a; border:none; padding:14px 24px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:transform 0.1s; letter-spacing:0.3px; }
+    .cart-btn { background:var(--gold); color:#0e0c0a; border:none; padding:14px 24px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; }
     .cart-btn:active { transform:scale(0.97); }
 
-    /* MODAL BASE */
     .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:200; display:none; align-items:flex-end; justify-content:center; }
     .modal-overlay.open { display:flex; }
-    .modal { background:var(--surface); border-radius:24px 24px 0 0; padding:28px 20px 40px; width:100%; max-width:480px; border-top:1px solid var(--border); animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1); max-height:90vh; overflow-y:auto; }
+    .modal { background:var(--surface); border-radius:24px 24px 0 0; padding:28px 20px 40px; width:100%; max-width:480px; border-top:1px solid var(--border); animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1); max-height:92vh; overflow-y:auto; }
     @keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
     .modal-handle { width:36px; height:4px; background:var(--border); border-radius:2px; margin:0 auto 20px; }
     .modal-title { font-family:'Playfair Display',serif; font-size:22px; margin-bottom:6px; color:var(--cream); }
     .modal-sub { font-size:13px; color:var(--muted); margin-bottom:22px; }
 
-    /* ORDER SUMMARY */
-    .order-items { background:var(--card); border-radius:12px; padding:14px; margin-bottom:20px; border:1px solid var(--border); }
+    .order-items-box { background:var(--card); border-radius:12px; padding:14px; margin-bottom:20px; border:1px solid var(--border); }
     .order-item-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:14px; }
     .order-item-row:not(:last-child) { border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:4px; }
-    .order-item-name { color:var(--cream); }
-    .order-item-qty { color:var(--muted); font-size:12px; margin-left:6px; }
-    .order-item-price { color:var(--gold); font-weight:500; }
+    .oname { color:var(--cream); }
+    .oqty { color:var(--muted); font-size:12px; margin-left:6px; }
+    .oprice { color:var(--gold); font-weight:500; }
     .order-total-row { display:flex; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-weight:600; font-size:15px; }
 
-    /* FORM */
     .form-label { font-size:12px; color:var(--muted); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px; display:block; }
-    .form-input { width:100%; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:13px 14px; color:var(--cream); font-size:15px; font-family:'DM Sans',sans-serif; margin-bottom:14px; transition:border-color 0.2s; outline:none; }
+    .form-input { width:100%; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:13px 14px; color:var(--cream); font-size:15px; font-family:'DM Sans',sans-serif; margin-bottom:14px; outline:none; transition:border-color 0.2s; }
     .form-input:focus { border-color:var(--gold); }
     .form-input::placeholder { color:var(--muted); }
-    .place-btn { width:100%; background:var(--gold); color:#0e0c0a; border:none; padding:16px; border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:4px; transition:transform 0.1s; }
-    .place-btn:active { transform:scale(0.98); }
+    .primary-btn { width:100%; background:var(--gold); color:#0e0c0a; border:none; padding:16px; border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:4px; }
+    .primary-btn:active { transform:scale(0.98); }
+    .secondary-btn { width:100%; background:transparent; border:1px solid var(--border); color:var(--muted); padding:13px; border-radius:12px; font-size:13px; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:10px; }
     .note-text { font-size:11px; color:var(--muted); text-align:center; margin-top:10px; }
 
-    /* UPI PAYMENT SCREEN */
-    .upi-screen { text-align:center; }
-    .upi-amount { font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); margin:16px 0 4px; }
-    .upi-label { font-size:13px; color:var(--muted); margin-bottom:20px; }
-    .upi-qr-box { background:white; border-radius:16px; padding:16px; display:inline-block; margin:0 auto 16px; }
-    .upi-qr-box img { width:180px; height:180px; display:block; }
-    .upi-id-box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin:0 20px 20px; display:flex; justify-content:space-between; align-items:center; }
-    .upi-id-text { font-size:14px; color:var(--cream); font-weight:500; }
-    .upi-copy-btn { font-size:12px; color:var(--gold); background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); padding:4px 10px; border-radius:6px; cursor:pointer; font-family:'DM Sans',sans-serif; }
-    .upi-apps { display:flex; justify-content:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
-    .upi-app-btn { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:8px 14px; font-size:13px; color:var(--cream); cursor:pointer; font-family:'DM Sans',sans-serif; display:flex; align-items:center; gap:6px; }
-    .paid-btn { width:calc(100% - 0px); background:var(--green); color:white; border:none; padding:16px; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; }
-    .skip-pay-btn { width:100%; background:transparent; border:1px solid var(--border); color:var(--muted); padding:12px; border-radius:12px; font-size:13px; cursor:pointer; font-family:'DM Sans',sans-serif; margin-top:10px; }
+    /* ── UPI SCREEN ── */
+    .upi-amount-box { background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px; text-align:center; margin-bottom:18px; }
+    .upi-big-amount { font-family:'Playfair Display',serif; font-size:42px; color:var(--gold); }
+    .upi-amount-label { font-size:12px; color:var(--muted); margin-top:2px; }
+    .qr-center { text-align:center; margin-bottom:16px; }
+    .qr-white-box { background:white; border-radius:14px; padding:12px; display:inline-block; }
+    .qr-white-box img { width:190px; height:190px; display:block; }
+    .upi-id-row { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+    .upi-id-val { font-size:15px; color:var(--cream); font-weight:600; }
+    .copy-btn { font-size:12px; color:var(--gold); background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); padding:5px 12px; border-radius:6px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+    .copy-btn.copied { color:var(--green); background:rgba(76,175,125,0.1); border-color:rgba(76,175,125,0.3); }
+    .steps-box { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:16px; }
+    .steps-title { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+    .pay-step { display:flex; gap:10px; padding:5px 0; font-size:13px; color:var(--muted); align-items:flex-start; }
+    .pay-step-n { width:20px; height:20px; background:rgba(201,168,76,0.12); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; margin-top:1px; }
+    .pay-step strong { color:var(--cream); }
+    .staff-confirm-box { background:rgba(232,149,74,0.08); border:1px solid rgba(232,149,74,0.25); border-radius:12px; padding:14px 16px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start; }
+    .staff-icon { font-size:24px; flex-shrink:0; }
+    .staff-title { font-size:14px; font-weight:600; color:var(--cream); margin-bottom:4px; }
+    .staff-desc { font-size:12px; color:var(--muted); line-height:1.5; }
 
-    /* ORDER STATUS SCREEN */
+    /* STATUS */
     .status-screen { text-align:center; padding:10px 0; }
-    .status-order-id { font-size:12px; color:var(--muted); letter-spacing:1px; margin-bottom:16px; }
-    .status-animation { font-size:60px; margin-bottom:16px; display:block; animation:pulse 2s infinite; }
+    .s-order-id { font-size:12px; color:var(--muted); letter-spacing:1px; margin-bottom:16px; }
+    .s-emoji { font-size:60px; margin-bottom:16px; display:block; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
-    .status-title { font-family:'Playfair Display',serif; font-size:24px; margin-bottom:8px; }
-    .status-msg { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:24px; }
-    .status-steps { display:flex; justify-content:center; gap:0; margin-bottom:28px; }
-    .step-item { display:flex; flex-direction:column; align-items:center; position:relative; flex:1; max-width:80px; }
-    .step-item:not(:last-child)::after { content:''; position:absolute; top:12px; left:calc(50% + 12px); right:calc(-50% + 12px); height:2px; background:var(--border); z-index:0; }
-    .step-item.done:not(:last-child)::after { background:var(--green); }
-    .step-dot { width:24px; height:24px; border-radius:50%; border:2px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:11px; margin-bottom:6px; z-index:1; position:relative; transition:all 0.4s; }
-    .step-item.done .step-dot { border-color:var(--green); background:var(--green); color:white; }
-    .step-item.active .step-dot { border-color:var(--gold); background:rgba(201,168,76,0.15); animation:stepPulse 1.5s infinite; }
-    @keyframes stepPulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4)} 50%{box-shadow:0 0 0 8px rgba(201,168,76,0)} }
-    .step-label { font-size:10px; color:var(--muted); text-align:center; }
-    .step-item.done .step-label { color:var(--green); }
-    .step-item.active .step-label { color:var(--gold); }
-
+    .s-title { font-family:'Playfair Display',serif; font-size:24px; margin-bottom:8px; }
+    .s-msg { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:24px; }
+    .steps-track { display:flex; justify-content:center; margin-bottom:28px; }
+    .st-item { display:flex; flex-direction:column; align-items:center; position:relative; flex:1; max-width:80px; }
+    .st-item:not(:last-child)::after { content:''; position:absolute; top:12px; left:calc(50% + 12px); right:calc(-50% + 12px); height:2px; background:var(--border); z-index:0; }
+    .st-item.done:not(:last-child)::after { background:var(--green); }
+    .st-dot { width:24px; height:24px; border-radius:50%; border:2px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:11px; margin-bottom:6px; z-index:1; position:relative; transition:all 0.4s; }
+    .st-item.done .st-dot { border-color:var(--green); background:var(--green); color:white; }
+    .st-item.active .st-dot { border-color:var(--gold); background:rgba(201,168,76,0.15); animation:stPulse 1.5s infinite; }
+    @keyframes stPulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4)} 50%{box-shadow:0 0 0 8px rgba(201,168,76,0)} }
+    .st-label { font-size:10px; color:var(--muted); text-align:center; }
+    .st-item.done .st-label { color:var(--green); }
+    .st-item.active .st-label { color:var(--gold); }
     .eta-box { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 20px; margin:0 0 20px; display:none; }
     .eta-box.show { display:block; }
-    .eta-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
-    .eta-time { font-family:'Playfair Display',serif; font-size:28px; color:var(--gold); }
+    .eta-lbl { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+    .eta-val { font-family:'Playfair Display',serif; font-size:28px; color:var(--gold); }
     .eta-sub { font-size:12px; color:var(--muted); }
-
-    .status-done-box { background:rgba(76,175,125,0.08); border:1px solid rgba(76,175,125,0.25); border-radius:12px; padding:16px; margin-bottom:16px; display:none; }
-    .status-done-box.show { display:block; }
-    .back-menu-btn { width:100%; background:transparent; border:1px solid var(--border); color:var(--cream); padding:13px; border-radius:12px; font-size:14px; cursor:pointer; font-family:'DM Sans',sans-serif; }
-
-    /* POLLING INDICATOR */
-    .live-dot { display:inline-block; width:6px; height:6px; background:var(--green); border-radius:50%; animation:livePulse 1.5s infinite; margin-right:6px; vertical-align:middle; }
-    @keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+    .ready-box { background:rgba(76,175,125,0.08); border:1px solid rgba(76,175,125,0.25); border-radius:12px; padding:16px; margin-bottom:16px; font-size:14px; display:none; }
+    .ready-box.show { display:block; }
+    .live-dot { display:inline-block; width:6px; height:6px; background:var(--green); border-radius:50%; animation:lp 1.5s infinite; margin-right:6px; vertical-align:middle; }
+    @keyframes lp { 0%,100%{opacity:1} 50%{opacity:0.3} }
   </style>
 </head>
 <body>
@@ -168,8 +156,7 @@
 
 <div class="menu-section active" id="sec-all">
   <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
-  <p class="section-title">Our Menu</p>
-  <p class="section-desc">Fresh, made to order</p>
+  <p class="section-title">Our Menu</p><p class="section-desc">Fresh, made to order</p>
   <div id="allItems"></div>
 </div>
 <div class="menu-section" id="sec-drinks">
@@ -188,7 +175,6 @@
   <div id="mealItems"></div>
 </div>
 
-<!-- CART BAR -->
 <div class="cart-bar" id="cartBar">
   <div class="cart-bar-inner">
     <div class="cart-info">
@@ -199,97 +185,112 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="mainModal">
+  <div class="modal">
     <div class="modal-handle"></div>
 
-    <!-- STEP 1: ORDER DETAILS FORM -->
+    <!-- STEP 1: DETAILS FORM -->
     <div id="step1">
       <p class="modal-title">Your Order</p>
       <p class="modal-sub">Quick details to place your order</p>
-      <div class="order-items" id="modalOrderItems"></div>
+      <div class="order-items-box" id="modalOrderItems"></div>
       <label class="form-label">Your Name</label>
       <input class="form-input" type="text" id="custName" placeholder="e.g. Rahul" />
       <label class="form-label">WhatsApp Number</label>
       <input class="form-input" type="tel" id="custPhone" placeholder="10-digit number" maxlength="10" />
       <label class="form-label">Table Number</label>
       <input class="form-input" type="number" id="tableNum" placeholder="e.g. 4" />
-      <button class="place-btn" onclick="goToPayment()">Continue to Payment →</button>
+      <button class="primary-btn" onclick="goToPayment()">Continue to Payment →</button>
       <p class="note-text">We save your number to send you special offers 🎁</p>
     </div>
 
-    <!-- STEP 2: UPI PAYMENT -->
+    <!-- STEP 2: UPI PAYMENT (FIXED) -->
     <div id="step2" style="display:none">
-      <p class="modal-title">Pay to Confirm</p>
-      <p class="modal-sub">Scan the QR or use any UPI app</p>
-      <div class="upi-screen">
-        <div class="upi-amount">₹<span id="upiAmount">0</span></div>
-        <div class="upi-label">Total Amount</div>
-        <div class="upi-qr-box">
-          <!-- UPI QR — generated dynamically -->
+      <p class="modal-title">Pay Now</p>
+      <p class="modal-sub">Scan QR with any UPI app on your phone</p>
+
+      <div class="upi-amount-box">
+        <div class="upi-big-amount">₹<span id="upiAmount">0</span></div>
+        <div class="upi-amount-label">Total Amount to Pay</div>
+      </div>
+
+      <div class="qr-center">
+        <div class="qr-white-box">
           <img id="upiQRImg" src="" alt="UPI QR Code" />
         </div>
-        <div class="upi-id-box">
-          <span class="upi-id-text" id="upiIdDisplay">pearl@upi</span>
-          <button class="upi-copy-btn" onclick="copyUPI()">Copy</button>
-        </div>
-        <div class="upi-apps">
-          <button class="upi-app-btn" onclick="openUPIApp('gpay')">🟢 GPay</button>
-          <button class="upi-app-btn" onclick="openUPIApp('phonepe')">🟣 PhonePe</button>
-          <button class="upi-app-btn" onclick="openUPIApp('paytm')">🔵 Paytm</button>
-        </div>
-        <button class="paid-btn" onclick="confirmPayment()">✓ I've Paid — Place Order</button>
-        <button class="skip-pay-btn" onclick="confirmPayment()">Pay at Counter (Cash)</button>
       </div>
+
+      <div class="upi-id-row">
+        <span class="upi-id-val" id="upiIdShow">pearl@upi</span>
+        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy UPI ID</button>
+      </div>
+
+      <div class="steps-box">
+        <div class="steps-title">How to pay</div>
+        <div class="pay-step"><div class="pay-step-n">1</div><div>Open <strong>GPay, PhonePe, Paytm</strong> or any UPI app</div></div>
+        <div class="pay-step"><div class="pay-step-n">2</div><div>Tap <strong>Scan QR</strong> and scan the code above</div></div>
+        <div class="pay-step"><div class="pay-step-n">3</div><div>Or tap <strong>Send Money → Pay by UPI ID</strong> and enter the ID</div></div>
+        <div class="pay-step"><div class="pay-step-n">4</div><div>Complete payment and <strong>show the success screen to staff</strong></div></div>
+      </div>
+
+      <!-- KEY FIX: Staff confirms payment, not customer self-certify -->
+      <div class="staff-confirm-box">
+        <div class="staff-icon">👨‍💼</div>
+        <div>
+          <div class="staff-title">Show payment to staff</div>
+          <div class="staff-desc">After paying, show your UPI success screen to our staff member. They will verify and place your order.</div>
+        </div>
+      </div>
+
+      <button class="primary-btn" onclick="placeOrder('upi')">✓ Staff Verified — Place My Order</button>
+      <button class="secondary-btn" onclick="placeOrder('cash')">Pay at Counter Instead (Cash)</button>
     </div>
 
-    <!-- STEP 3: ORDER STATUS -->
+    <!-- STEP 3: LIVE STATUS -->
     <div id="step3" style="display:none">
       <div class="status-screen">
-        <div class="status-order-id" id="statusOrderId"></div>
-        <span class="status-animation" id="statusEmoji">⏳</span>
-        <p class="status-title" id="statusTitle">Order Sent!</p>
-        <p class="status-msg" id="statusMsg">Waiting for Pearl to confirm your order...<br><span class="live-dot"></span>Live updates</p>
+        <div class="s-order-id" id="sOrderId"></div>
+        <span class="s-emoji" id="sEmoji">⏳</span>
+        <p class="s-title" id="sTitle">Order Placed!</p>
+        <p class="s-msg" id="sMsg">Waiting for Pearl to confirm...<br><span class="live-dot"></span>Live updates</p>
 
-        <div class="status-steps">
-          <div class="step-item active" id="st1">
-            <div class="step-dot">✓</div>
-            <div class="step-label">Placed</div>
+        <div class="steps-track">
+          <div class="st-item active" id="st1">
+            <div class="st-dot">✓</div>
+            <div class="st-label">Placed</div>
           </div>
-          <div class="step-item" id="st2">
-            <div class="step-dot">👨‍🍳</div>
-            <div class="step-label">Accepted</div>
+          <div class="st-item" id="st2">
+            <div class="st-dot">👨‍🍳</div>
+            <div class="st-label">Accepted</div>
           </div>
-          <div class="step-item" id="st3">
-            <div class="step-dot">🍽️</div>
-            <div class="step-label">Ready</div>
+          <div class="st-item" id="st3">
+            <div class="st-dot">🍽️</div>
+            <div class="st-label">Ready</div>
           </div>
         </div>
 
         <div class="eta-box" id="etaBox">
-          <div class="eta-label">Estimated Time</div>
-          <div class="eta-time" id="etaTime">— mins</div>
-          <div class="eta-sub">Your food is being prepared</div>
+          <div class="eta-lbl">Estimated Time</div>
+          <div class="eta-val" id="etaVal">— mins</div>
+          <div class="eta-sub">Your food is being prepared 👨‍🍳</div>
         </div>
 
-        <div class="status-done-box" id="donebox">
-          🎉 Your order is ready! Please collect it.
+        <div class="ready-box" id="readyBox">
+          🎉 Your order is ready! Please collect from the counter.
         </div>
 
-        <button class="back-menu-btn" onclick="closeModal()">← Back to Menu</button>
+        <button class="secondary-btn" onclick="closeModal()">← Back to Menu</button>
       </div>
     </div>
+
   </div>
 </div>
 
 <script>
-// ─── CONFIG — CHANGE THESE ────────────────────────────────────
-const OWNER_WHATSAPP = '917404787308';   // 91 + owner's number
-const UPI_ID         = '8130560938@ybl';      // Restaurant UPI ID
+const OWNER_WHATSAPP = '919999999999';
+const UPI_ID         = 'pearl@upi';
 const UPI_NAME       = 'Pearl Restaurant';
 const SHEET_URL      = 'https://script.google.com/macros/s/AKfycbzXgaSgv8FPV-mwiudhqInPSD3LMMhR9B3Zf7YHQ2PAxM9T_n-2u-kvqm-AGad3Euo_SQ/exec';
-// ─────────────────────────────────────────────────────────────
 
 const MENU = [
   { id:1, name:'Chai',       price:50,  emoji:'🍵', cat:'drinks', desc:'Classic Indian milk tea' },
@@ -301,250 +302,193 @@ const MENU = [
 
 const cart = {};
 let currentOrderId = null;
-let pollingInterval = null;
+let pollTimer = null;
 
-// ─── RENDER ────────────────────────────────────────────────────
 function renderItems(items, cid) {
-  const c = document.getElementById(cid);
-  c.innerHTML = items.map(item => `
-    <div class="item-card" id="card-${item.id}">
-      <div class="item-emoji">${item.emoji}</div>
+  document.getElementById(cid).innerHTML = items.map(i => `
+    <div class="item-card" id="card-${i.id}">
+      <div class="item-emoji">${i.emoji}</div>
       <div class="item-info">
-        <div class="item-name">${item.name}</div>
-        <div class="item-desc">${item.desc}</div>
-        <div class="qty-control" id="qty-${item.id}" style="display:none">
-          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
-          <span class="qty-num" id="qnum-${item.id}">0</span>
-          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        <div class="item-name">${i.name}</div>
+        <div class="item-desc">${i.desc}</div>
+        <div class="qty-control" id="qty-${i.id}" style="display:none">
+          <button class="qty-btn" onclick="changeQty(${i.id},-1)">−</button>
+          <span class="qty-num" id="qnum-${i.id}">0</span>
+          <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-        <div class="item-price"><span class="rs">₹</span>${item.price}</div>
-        <button class="add-btn" id="addbtn-${item.id}" onclick="addFirst(${item.id})">Add</button>
+        <div class="item-price"><span class="rs">₹</span>${i.price}</div>
+        <button class="add-btn" id="addbtn-${i.id}" onclick="addFirst(${i.id})">Add</button>
       </div>
     </div>`).join('');
 }
 
 function addFirst(id) {
-  cart[id] = 1;
-  document.getElementById(`addbtn-${id}`).style.display = 'none';
-  document.getElementById(`qty-${id}`).style.display = 'flex';
-  document.getElementById(`qnum-${id}`).textContent = 1;
+  cart[id]=1;
+  document.getElementById(`addbtn-${id}`).style.display='none';
+  document.getElementById(`qty-${id}`).style.display='flex';
+  document.getElementById(`qnum-${id}`).textContent=1;
   document.getElementById(`card-${id}`).classList.add('selected');
   updateCart();
 }
-function changeQty(id, d) {
-  cart[id] = (cart[id]||0) + d;
-  if (cart[id] <= 0) {
+function changeQty(id,d) {
+  cart[id]=(cart[id]||0)+d;
+  if(cart[id]<=0){
     delete cart[id];
-    document.getElementById(`addbtn-${id}`).style.display = 'block';
-    document.getElementById(`qty-${id}`).style.display = 'none';
+    document.getElementById(`addbtn-${id}`).style.display='block';
+    document.getElementById(`qty-${id}`).style.display='none';
     document.getElementById(`card-${id}`).classList.remove('selected');
-  } else {
-    document.getElementById(`qnum-${id}`).textContent = cart[id];
-  }
+  } else document.getElementById(`qnum-${id}`).textContent=cart[id];
   updateCart();
 }
 function updateCart() {
-  let total=0, count=0;
-  Object.keys(cart).forEach(id => {
-    const item = MENU.find(m=>m.id==id);
-    total += item.price * cart[id];
-    count += cart[id];
+  let total=0,count=0;
+  Object.keys(cart).forEach(id=>{
+    const m=MENU.find(m=>m.id==id);
+    total+=m.price*cart[id]; count+=cart[id];
   });
-  document.getElementById('cartTotal').textContent = total;
-  document.getElementById('cartCount').textContent = `${count} item${count!==1?'s':''}`;
-  document.getElementById('cartBar').classList.toggle('visible', count > 0);
+  document.getElementById('cartTotal').textContent=total;
+  document.getElementById('cartCount').textContent=`${count} item${count!==1?'s':''}`;
+  document.getElementById('cartBar').classList.toggle('visible',count>0);
 }
-function switchTab(cat, el) {
+function switchTab(cat,el) {
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.menu-section').forEach(s=>s.classList.remove('active'));
   el.classList.add('active');
   document.getElementById(`sec-${cat}`).classList.add('active');
 }
 
-// ─── MODAL ─────────────────────────────────────────────────────
 function openOrderModal() {
-  if (!Object.keys(cart).length) return;
-  let html='', total=0;
-  Object.keys(cart).forEach(id => {
-    const item = MENU.find(m=>m.id==id);
-    const sub = item.price * cart[id];
-    total += sub;
-    html += `<div class="order-item-row">
-      <div><span class="order-item-name">${item.name}</span><span class="order-item-qty">x${cart[id]}</span></div>
-      <div class="order-item-price">₹${sub}</div>
-    </div>`;
+  if(!Object.keys(cart).length) return;
+  let html='',total=0;
+  Object.keys(cart).forEach(id=>{
+    const m=MENU.find(m=>m.id==id);
+    const sub=m.price*cart[id]; total+=sub;
+    html+=`<div class="order-item-row">
+      <div><span class="oname">${m.name}</span><span class="oqty">x${cart[id]}</span></div>
+      <div class="oprice">₹${sub}</div></div>`;
   });
-  html += `<div class="order-total-row"><span>Total</span><span style="color:var(--gold)">₹${total}</span></div>`;
-  document.getElementById('modalOrderItems').innerHTML = html;
+  html+=`<div class="order-total-row"><span>Total</span><span style="color:var(--gold)">₹${total}</span></div>`;
+  document.getElementById('modalOrderItems').innerHTML=html;
   showStep(1);
   document.getElementById('modalOverlay').classList.add('open');
 }
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
-  if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
+  if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
 }
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-function showStep(n) {
-  [1,2,3].forEach(i => document.getElementById(`step${i}`).style.display = i===n?'block':'none');
-}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function showStep(n){[1,2,3].forEach(i=>document.getElementById(`step${i}`).style.display=i===n?'block':'none');}
 
-// ─── STEP 1 → PAYMENT ─────────────────────────────────────────
 function goToPayment() {
-  const name = document.getElementById('custName').value.trim();
-  const phone = document.getElementById('custPhone').value.trim();
-  const table = document.getElementById('tableNum').value.trim();
-  if (!name) { alert('Please enter your name'); return; }
-  if (phone.length !== 10) { alert('Enter a valid 10-digit number'); return; }
-  if (!table) { alert('Please enter your table number'); return; }
-
-  const total = Object.keys(cart).reduce((sum,id) => {
-    return sum + MENU.find(m=>m.id==id).price * cart[id];
-  }, 0);
-
-  document.getElementById('upiAmount').textContent = total;
-  document.getElementById('upiIdDisplay').textContent = UPI_ID;
-
-  // Generate UPI QR
-  const upiString = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiString)}`;
-  document.getElementById('upiQRImg').src = qrUrl;
-
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const table=document.getElementById('tableNum').value.trim();
+  if(!name){alert('Please enter your name');return;}
+  if(phone.length!==10){alert('Enter a valid 10-digit number');return;}
+  if(!table){alert('Please enter your table number');return;}
+  const total=Object.keys(cart).reduce((s,id)=>s+MENU.find(m=>m.id==id).price*cart[id],0);
+  document.getElementById('upiAmount').textContent=total;
+  document.getElementById('upiIdShow').textContent=UPI_ID;
+  // QR encodes the UPI deep link — any UPI app can read this
+  const upiStr=`upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR&tn=PearlOrder`;
+  document.getElementById('upiQRImg').src=`https://api.qrserver.com/v1/create-qr-code/?size=190x190&data=${encodeURIComponent(upiStr)}`;
   showStep(2);
 }
 
 function copyUPI() {
-  navigator.clipboard.writeText(UPI_ID).then(() => {
-    const btn = document.querySelector('.upi-copy-btn');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
+  navigator.clipboard.writeText(UPI_ID).then(()=>{
+    const b=document.getElementById('copyBtn');
+    b.textContent='✓ Copied!'; b.classList.add('copied');
+    setTimeout(()=>{b.textContent='Copy UPI ID';b.classList.remove('copied');},2500);
   });
 }
 
-function openUPIApp(app) {
-  const total = document.getElementById('upiAmount').textContent;
-  const upiString = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`;
-  const links = {
-    gpay: `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`,
-    phonepe: `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`,
-    paytm: `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${total}&cu=INR`,
-  };
-  window.location.href = links[app] || upiString;
-}
+function placeOrder(method) {
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const table=document.getElementById('tableNum').value.trim();
+  const total=document.getElementById('upiAmount').textContent;
 
-// ─── CONFIRM ORDER ─────────────────────────────────────────────
-function confirmPayment() {
-  const name  = document.getElementById('custName').value.trim();
-  const phone = document.getElementById('custPhone').value.trim();
-  const table = document.getElementById('tableNum').value.trim();
-  const total = document.getElementById('upiAmount').textContent;
-
-  // Build order items text
-  let itemsText = '';
-  let itemsArr = [];
-  Object.keys(cart).forEach(id => {
-    const item = MENU.find(m=>m.id==id);
-    itemsText += `• ${item.name} x${cart[id]} = ₹${item.price*cart[id]}\n`;
-    itemsArr.push(`${item.name} x${cart[id]}`);
+  let itemsText='';
+  Object.keys(cart).forEach(id=>{
+    const m=MENU.find(m=>m.id==id);
+    itemsText+=`• ${m.name} x${cart[id]} = ₹${m.price*cart[id]}\n`;
   });
 
-  // Generate order ID
-  currentOrderId = 'PRD' + Date.now().toString().slice(-6);
+  currentOrderId='PRD'+Date.now().toString().slice(-6);
 
-  // Save to sheet + get order ID back
-  saveOrder(currentOrderId, name, phone, table, itemsText, total);
+  // ── OWNER gets clean order details only ──
+  const ownerMsg=
+    `🔔 *New Order — Pearl*\n\n`+
+    `🆔 Order: #${currentOrderId}\n`+
+    `👤 ${name} | Table ${table}\n`+
+    `📱 ${phone}\n`+
+    `💳 Payment: ${method==='upi'?'UPI ✓':'Cash — collect at table'}\n\n`+
+    `*Items:*\n${itemsText}\n`+
+    `💰 *Total: ₹${total}*\n\n`+
+    `_Open dashboard: pearl-menu.vercel.app/owner.html_`;
 
-  // WhatsApp to owner
-  const msg = `🔔 *New Order — Pearl*\n\n🆔 Order: ${currentOrderId}\n👤 Name: ${name}\n📱 Phone: ${phone}\n🪑 Table: ${table}\n\n*Items:*\n${itemsText}\n💰 *Total: ₹${total}*\n\n_Reply with time to confirm e.g. "15 mins"_\n_Reply "ready" when food is done_`;
-  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(ownerMsg)}`, '_blank');
+
+  // Save to Google Sheet
+  const now=new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({action:'neworder',orderId:currentOrderId,name,phone,table,items:itemsText,total,time:now,status:'pending',payment:method})});
 
   // Show status screen
   showStep(3);
-  document.getElementById('statusOrderId').textContent = `Order #${currentOrderId}`;
+  document.getElementById('sOrderId').textContent=`Order #${currentOrderId}`;
 
-  // Start polling for status
-  startPolling(currentOrderId);
+  // Poll for status updates
+  pollTimer=setInterval(()=>{
+    fetch(`${SHEET_URL}?action=status&orderId=${currentOrderId}`)
+      .then(r=>r.json()).then(updateStatusUI).catch(()=>{});
+  },8000);
 
-  // Clear cart
-  Object.keys(cart).forEach(id => {
+  // Clear cart from UI
+  Object.keys(cart).forEach(id=>{
     delete cart[id];
-    const a = document.getElementById(`addbtn-${id}`);
-    const q = document.getElementById(`qty-${id}`);
-    const c = document.getElementById(`card-${id}`);
-    if(a) a.style.display='block';
-    if(q) q.style.display='none';
-    if(c) c.classList.remove('selected');
+    const a=document.getElementById(`addbtn-${id}`);
+    const q=document.getElementById(`qty-${id}`);
+    const c=document.getElementById(`card-${id}`);
+    if(a)a.style.display='block'; if(q)q.style.display='none'; if(c)c.classList.remove('selected');
   });
   updateCart();
 }
 
-// ─── STATUS POLLING ────────────────────────────────────────────
-function startPolling(orderId) {
-  if (SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
-  pollingInterval = setInterval(() => checkStatus(orderId), 8000);
-}
-
-function checkStatus(orderId) {
-  fetch(`${SHEET_URL}?action=status&orderId=${orderId}`)
-    .then(r => r.json())
-    .then(data => updateStatusUI(data))
-    .catch(() => {});
-}
-
 function updateStatusUI(data) {
-  if (!data || !data.status) return;
-  const status = data.status.toLowerCase();
-
-  if (status === 'accepted' || status === 'preparing') {
-    document.getElementById('st1').className = 'step-item done';
-    document.getElementById('st2').className = 'step-item active';
-    document.getElementById('statusEmoji').textContent = '👨‍🍳';
-    document.getElementById('statusTitle').textContent = 'Order Accepted!';
-    document.getElementById('statusMsg').innerHTML = 'Your food is being prepared<br><span class="live-dot"></span>Live updates';
-    if (data.eta) {
-      document.getElementById('etaBox').classList.add('show');
-      document.getElementById('etaTime').textContent = data.eta;
-    }
+  if(!data||!data.status) return;
+  const s=data.status.toLowerCase();
+  if(s==='preparing'||s==='accepted'){
+    document.getElementById('st1').className='st-item done';
+    document.getElementById('st2').className='st-item active';
+    document.getElementById('sEmoji').textContent='👨‍🍳';
+    document.getElementById('sTitle').textContent='Order Accepted!';
+    document.getElementById('sMsg').innerHTML='Your food is being prepared<br><span class="live-dot"></span>Live updates';
+    if(data.eta){document.getElementById('etaBox').classList.add('show');document.getElementById('etaVal').textContent=data.eta;}
   }
-  if (status === 'ready') {
-    document.getElementById('st1').className = 'step-item done';
-    document.getElementById('st2').className = 'step-item done';
-    document.getElementById('st3').className = 'step-item done';
-    document.getElementById('statusEmoji').textContent = '🎉';
-    document.getElementById('statusTitle').textContent = 'Order Ready!';
-    document.getElementById('statusMsg').innerHTML = 'Please collect your food!';
-    document.getElementById('donebox').classList.add('show');
+  if(s==='ready'){
+    document.getElementById('st1').className='st-item done';
+    document.getElementById('st2').className='st-item done';
+    document.getElementById('st3').className='st-item done';
+    document.getElementById('sEmoji').textContent='🎉';
+    document.getElementById('sTitle').textContent='Order Ready!';
+    document.getElementById('sMsg').innerHTML='Come collect your food!';
+    document.getElementById('readyBox').classList.add('show');
     document.getElementById('etaBox').classList.remove('show');
-    clearInterval(pollingInterval);
+    clearInterval(pollTimer);
   }
 }
 
-// ─── SAVE TO SHEET ─────────────────────────────────────────────
-function saveOrder(orderId, name, phone, table, items, total) {
-  if (SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
-  const now = new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'});
-  fetch(SHEET_URL, {
-    method:'POST', mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({action:'neworder', orderId, name, phone, table, items, total, time:now, status:'pending'})
-  });
-}
-
-// ─── INIT ──────────────────────────────────────────────────────
-renderItems(MENU, 'allItems');
-renderItems(MENU.filter(m=>m.cat==='drinks'), 'drinkItems');
-renderItems(MENU.filter(m=>m.cat==='snacks'), 'snackItems');
-renderItems(MENU.filter(m=>m.cat==='meals'),  'mealItems');
-
-const urlParams = new URLSearchParams(window.location.search);
-const tbl = urlParams.get('table');
-if (tbl) {
-  document.getElementById('tableBadge').textContent = `🪑 Table ${tbl}`;
-  document.getElementById('tableNum').value = tbl;
-}
+renderItems(MENU,'allItems');
+renderItems(MENU.filter(m=>m.cat==='drinks'),'drinkItems');
+renderItems(MENU.filter(m=>m.cat==='snacks'),'snackItems');
+renderItems(MENU.filter(m=>m.cat==='meals'),'mealItems');
+const tbl=new URLSearchParams(window.location.search).get('table');
+if(tbl){document.getElementById('tableBadge').textContent=`🪑 Table ${tbl}`;document.getElementById('tableNum').value=tbl;}
 </script>
 </body>
 </html>
+
