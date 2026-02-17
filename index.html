@@ -257,8 +257,8 @@
       <button class="cash-option" onclick="submitOrder('cash')">
         <div class="cash-icon">&#128181;</div>
         <div class="cash-info">
-          <div class="cash-title">Pay at Counter</div>
-          <div class="cash-sub">Order now, pay when food arrives</div>
+          <div class="cash-title">Pay Later / Cash</div>
+          <div class="cash-sub">Order now, pay by cash when food arrives</div>
         </div>
       </button>
     </div>
@@ -285,7 +285,7 @@
         </div>
 
         <div class="ready-box" id="readyBox">
-          🎉 Your order is ready! Please collect from the counter.
+          🍽️ Your order is ready and will be served to your table shortly. Thank you for your patience! 🙏
         </div>
 
         <button class="btn-ghost" onclick="closeModal()">← Back to Menu</button>
@@ -432,14 +432,14 @@ function submitOrder(method){
   // Clean WhatsApp message to owner
   // Shows payment method so owner knows what to check
   const payLabel=method==='upi'
-    ? '💳 UPI — verify in your UPI app'
-    : '💵 Cash — collect at table';
+    ? '✅ ONLINE PAID (UPI) — verify in your GPay/PhonePe'
+    : '💵 CASH / PAY LATER — collect payment at table';
 
   const ownerMsg=
     `🔔 *New Order — Pearl*\n\n`+
     `🆔 #${currentOrderId} | Table ${table}\n`+
     `👤 ${name} | 📱 ${phone}\n`+
-    `${payLabel}\n\n`+
+    `💳 *Payment: ${payLabel}*\n\n`+
     `*Items ordered:*\n${itemsText}\n`+
     `💰 *Total: ₹${total}*`;
 
@@ -457,9 +457,9 @@ function submitOrder(method){
   document.getElementById('sOid').textContent=`Order #${currentOrderId}`;
   const tag=document.getElementById('payTag');
   if(method==='upi'){
-    tag.className='pay-tag upi';tag.textContent='💳 Paid via UPI';
+    tag.className='pay-tag upi';tag.textContent='✅ Paid via UPI';
   } else {
-    tag.className='pay-tag cash';tag.textContent='💵 Pay at Counter';
+    tag.className='pay-tag cash';tag.textContent='💵 Pay Later / Cash';
   }
 
   // Poll for live updates
@@ -496,9 +496,9 @@ function updateStatusUI(data){
     document.getElementById('st1').className='st-item done';
     document.getElementById('st2').className='st-item done';
     document.getElementById('st3').className='st-item done';
-    document.getElementById('sEmoji').textContent='🎉';
+    document.getElementById('sEmoji').textContent='🍽️';
     document.getElementById('sTitle').textContent='Order Ready!';
-    document.getElementById('sMsg').innerHTML='Come collect your food!';
+    document.getElementById('sMsg').innerHTML='Your order is ready — being served to your table shortly! &#x1F64F;';
     document.getElementById('readyBox').classList.add('show');
     document.getElementById('etaBox').classList.remove('show');
     clearInterval(pollTimer);
