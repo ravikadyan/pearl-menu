@@ -439,9 +439,7 @@ function goToPayment(){
   if(!table){alert('Please enter your table number');return;}
   const total=Object.keys(cart).reduce((s,id)=>s+MENU.find(m=>m.id==id).price*cart[id],0);
   document.getElementById('payAmount').textContent=total;
-  document.getElementById('howAmount').textContent=total;
-  const ha2=document.getElementById('howAmount2');
-  if(ha2)ha2.textContent=total;
+  document.getElementById('cdAmount').textContent=total;
   document.getElementById('upiIdDisplay').textContent=UPI_ID;
   document.getElementById('paidBox').classList.remove('show');
   document.getElementById('countdownBox').classList.remove('show');
