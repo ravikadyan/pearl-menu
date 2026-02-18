@@ -83,6 +83,7 @@
 
     /* MODAL */
     .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:200;display:none;align-items:flex-end;justify-content:center;}
+    .modal-overlay.center{align-items:center;}
     .modal-overlay.open{display:flex;}
     .modal{background:var(--surface);border-radius:24px 24px 0 0;padding:24px 20px 40px;width:100%;max-width:480px;border-top:1px solid var(--border);animation:slideUp 0.38s cubic-bezier(0.34,1.56,0.64,1);max-height:92vh;overflow-y:auto;}
     @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
@@ -438,7 +439,12 @@ function closeModal(){
   if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
 }
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
-function showStep(n){[1,2,3].forEach(i=>document.getElementById(`step${i}`).style.display=i===n?'block':'none');}
+function showStep(n){
+  [1,2,3].forEach(i=>document.getElementById(`step${i}`).style.display=i===n?'block':'none');
+  const overlay=document.getElementById('modalOverlay');
+  if(n===3) overlay.classList.add('center');
+  else overlay.classList.remove('center');
+}
 function goToPayment(){
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
