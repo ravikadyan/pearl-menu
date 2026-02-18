@@ -247,24 +247,29 @@
       <div class="pay-amount-wrap">
         <div class="pay-big">&#8377;<span id="payAmount">0</span></div>
         <div class="pay-lbl">Total Amount to Pay</div>
-        <div class="pay-hint">&#128247; Open any UPI app &#8594; Send Money &#8594; Paste UPI ID &#8594; Pay<br>or Scan the <strong>PAY QR</strong> on your table</div>
       </div>
-      <div class="upi-box">
-        <div>
-          <div class="upi-lbl">UPI ID</div>
-          <div class="upi-val" id="upiIdDisplay">8130560938@ybl</div>
-        </div>
-        <button class="copy-btn" id="copyBtn" onclick="copyUPI()">Copy</button>
+
+      <!-- OPTION 1: PAY LATER -->
+      <div style="background:rgba(232,132,74,0.1);border:1px solid rgba(232,132,74,0.25);border-radius:14px;padding:18px;text-align:center;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:600;color:var(--cream);margin-bottom:10px">&#128181; Pay Later / Cash</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">Place order now, pay by cash or UPI when food arrives at your table</div>
+        <button class="btn-green" onclick="submitOrder('cash')" style="background:var(--orange)">&#10004; Place Order — Pay Later</button>
       </div>
-      <button class="btn-green" onclick="submitOrder('upi')">&#9989; &nbsp;I've Paid &#8212; Place My Order</button>
+
       <div class="or-row"><div class="or-line"></div><div class="or-txt">or</div><div class="or-line"></div></div>
-      <button class="cash-btn" onclick="submitOrder('cash')">
-        <div class="cash-ico">&#128181;</div>
-        <div>
-          <div class="cash-ttl">Pay Later / Cash</div>
-          <div class="cash-sub">Order now, pay by cash when food arrives</div>
+
+      <!-- OPTION 2: PAY NOW -->
+      <div style="background:rgba(90,175,122,0.08);border:1px solid rgba(90,175,122,0.2);border-radius:14px;padding:18px;text-align:center;margin-bottom:14px">
+        <div style="font-size:13px;font-weight:600;color:var(--cream);margin-bottom:10px">&#128179; Pay Now via UPI</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">
+          1. Scan the <strong style="color:var(--green)">PAY QR on your table</strong> with GPay/PhonePe<br>
+          2. Enter <strong style="color:var(--green)">&#8377;<span id="payAmount2">0</span></strong> and pay<br>
+          3. Come back here and tap confirm below
         </div>
-      </button>
+        <button class="btn-green" onclick="submitOrder('upi')">&#9989; &nbsp;I've Paid &#8212; Confirm Order</button>
+      </div>
+    </div>
+
     </div>
 
     <div id="step3" style="display:none">
@@ -443,16 +448,14 @@ function goToPayment(){
   if(!table){alert('Please enter your table number');return;}
   const total=Object.keys(cart).reduce((s,id)=>s+MENU.find(m=>m.id==id).price*cart[id],0);
   document.getElementById('payAmount').textContent=total;
-  document.getElementById('upiIdDisplay').textContent=UPI_ID;
+  // Update payAmount2 after a tiny delay to ensure DOM is ready
+  setTimeout(()=>{
+    const pa2=document.getElementById('payAmount2');
+    if(pa2) pa2.textContent=total;
+  },10);
   showStep(2);
 }
-function copyUPI(){
-  navigator.clipboard.writeText(UPI_ID).then(()=>{
-    const b=document.getElementById('copyBtn');
-    b.textContent='Copied!';b.classList.add('copied');
-    setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied');},2500);
-  }).catch(()=>{prompt('Copy this UPI ID:',UPI_ID);});
-}
+
 function submitOrder(method){
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
