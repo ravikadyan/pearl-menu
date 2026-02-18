@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pearl — Owner Dashboard</title>
+  <title>MyHotel — Owner Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -103,7 +103,7 @@
 
 <!-- LOGIN SCREEN -->
 <div class="login-screen" id="loginScreen">
-  <div class="login-logo">Pearl.</div>
+  <div class="login-logo">My<em style="color:var(--gold)">Hotel</em></div>
   <div class="login-sub">Owner Dashboard</div>
   <input class="login-input" type="password" id="loginPin" placeholder="Enter PIN" maxlength="4"/>
   <button class="login-btn" onclick="doLogin()">Enter Dashboard</button>
@@ -114,7 +114,7 @@
 <div id="dashboard" style="display:none">
   <div class="header">
     <div class="header-left">
-      <h1>Pearl.</h1>
+      <h1>My<em style="color:var(--gold)">Hotel</em></h1>
       <p id="dateDisplay"></p>
     </div>
     <div class="live-badge"><div class="live-dot"></div> Live</div>
@@ -317,7 +317,7 @@ function acceptOrder(orderId) {
     // Opens WhatsApp with customer's number — owner just presses Send
     const itemsList = order.items.trim().split('\n').filter(Boolean).join('\n');
     const msg = `✅ *Order Confirmed!*\n\n`
-      + `Hi ${order.name}! 👋 Your order at *Pearl, Panipat* is confirmed.\n\n`
+      + `Hi ${order.name}! 👋 Your order at *MyHotel* is confirmed.\n\n`
       + `*Your Items:*\n${itemsList}\n\n`
       + `⏱️ *Ready in: ${eta}*\n`
       + `🪑 *Table:* ${order.table}\n\n`
@@ -338,7 +338,7 @@ function markReady(orderId) {
   const order = orders.find(o => o.orderId === orderId);
   if (order) {
     // Opens WhatsApp with customer's number — owner just presses Send
-    const msg = `🍽️ *Order Ready — Pearl*\n\n`
+    const msg = `🍽️ *Order Ready — MyHotel*\n\n`
       + `Hi ${order.name}! Your order is ready and being served to your table shortly.\n\n`
       + `🪑 Table: ${order.table}\n`
       + `🆔 Order: #${orderId}\n\n`
