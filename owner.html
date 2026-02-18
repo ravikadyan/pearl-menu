@@ -324,7 +324,6 @@ function acceptOrder(orderId) {
   }
   
   updateOrderStatus(orderId, 'preparing', eta);
-  const order = orders.find(o => o.orderId === orderId);
   if (order) {
     // Opens WhatsApp with customer's number — owner just presses Send
     const itemsList = order.items.trim().split('\n').filter(Boolean).join('\n');
@@ -347,7 +346,6 @@ function markReady(orderId) {
   }
   
   updateOrderStatus(orderId, 'ready', null);
-  const order = orders.find(o => o.orderId === orderId);
   if (order) {
     // Opens WhatsApp with customer's number — owner just presses Send
     const msg = `🍽️ *Order Ready — MyHotel*\n\n`
