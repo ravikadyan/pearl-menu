@@ -206,8 +206,12 @@ function loadDemoOrders() {
 }
 
 function fetchOrders() {
+  console.log('Fetching orders from:', SHEET_URL);
   fetch(`${SHEET_URL}?action=getorders`)
-    .then(r => r.json())
+    .then(r => {
+      console.log('Response received:', r.status);
+      return r.json();
+    })
     .then(data => {
       if (data.orders) {
         if (data.orders.length > lastOrderCount && lastOrderCount > 0) showNotification();
