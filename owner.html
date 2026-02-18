@@ -182,7 +182,7 @@ function initDashboard() {
     loadDemoOrders();
   } else {
     fetchOrders();
-    setInterval(fetchOrders, 10000); // poll every 10 seconds
+    setInterval(fetchOrders, 3000); // poll every 3 seconds — faster updates
   }
 }
 
@@ -302,6 +302,15 @@ function selectETA(orderId, time) {
 function acceptOrder(orderId) {
   const eta = selectedETA[orderId];
   if (!eta) { alert('Please select an estimated time first'); return; }
+  
+  // Immediate UI update — don't wait for next poll
+  const order = orders.find(o => o.orderId === orderId);
+  if (order) {
+    order.status = 'preparing';
+    order.eta = eta;
+    renderOrders(); // Re-render immediately
+  }
+  
   updateOrderStatus(orderId, 'preparing', eta);
   const order = orders.find(o => o.orderId === orderId);
   if (order) {
@@ -318,6 +327,13 @@ function acceptOrder(orderId) {
 }
 
 function markReady(orderId) {
+  // Immediate UI update — don't wait for next poll
+  const order = orders.find(o => o.orderId === orderId);
+  if (order) {
+    order.status = 'ready';
+    renderOrders(); // Re-render immediately
+  }
+  
   updateOrderStatus(orderId, 'ready', null);
   const order = orders.find(o => o.orderId === orderId);
   if (order) {
