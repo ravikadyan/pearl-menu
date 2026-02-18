@@ -158,15 +158,23 @@ let selectedETA = {};
 
 // ─── LOGIN ─────────────────────────────────────────────────────
 function doLogin() {
-  const pin = document.getElementById('loginPin').value;
-  if (pin === DASHBOARD_PIN) {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    initDashboard();
-  } else {
-    document.getElementById('loginPin').style.borderColor = 'var(--red)';
-    document.getElementById('loginPin').value = '';
-    document.getElementById('loginPin').placeholder = 'Wrong PIN';
+  try {
+    const pin = document.getElementById('loginPin').value;
+    console.log('PIN entered:', pin, 'Expected:', DASHBOARD_PIN);
+    if (pin === DASHBOARD_PIN) {
+      console.log('PIN correct, logging in...');
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      initDashboard();
+    } else {
+      console.log('PIN incorrect');
+      document.getElementById('loginPin').style.borderColor = 'var(--red)';
+      document.getElementById('loginPin').value = '';
+      document.getElementById('loginPin').placeholder = 'Wrong PIN - try 1234';
+    }
+  } catch(e) {
+    console.error('Login error:', e);
+    alert('Login error: ' + e.message);
   }
 }
 document.getElementById('loginPin').addEventListener('keypress', e => {
